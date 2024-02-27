@@ -26,7 +26,7 @@ var chart = d3.select(".chart")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.csv("gr_js_count.csv", function(error, data) {
+d3.csv("data/gr_js_count.csv", function(error, data) {
 
   // data.push({
   //   name: 'Total',
