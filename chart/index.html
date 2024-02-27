@@ -5,11 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css" /> 
+    <script src="noframework.waypoints.min.js"></script>
     <title>Reading Habits</title>
 </head>
 <body>
-    <svg class="chart"></svg>
-    
+    <div class="title-container">
+        <div class="title-info">
+            <h1>My Reading Habits</h1>
+            <p>Follow the journey of my reading habits.</p>
+            <p class="byline">By Austin Steinhart | Spring 2024</p>
+        </div>
+    </div>
+    <div class="entry">
+        <div class="chartContainer">
+            <h3>My Reading Habits</h3>
+            <svg class="chart"></svg>
+        </div>
+        <div class="scrollOnTop" id="step1">
+            <p>one</p>
+        </div>
+        <div class="scrollOnTop center" id="step2">
+            <p>two</p>
+        </div>
+        <div class="scrollOnTop center" id="step3">
+            <p>three</p>
+        </div>
+        <div class="scrollOnTop" style="opacity:0;">
+            &nbsp;
+        </div>
+    </div>
+
     <script src="main.js"></script>
 </body>
 </html>

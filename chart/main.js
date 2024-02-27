@@ -1,6 +1,8 @@
-var margin = {top: 20, right: 30, bottom: 30, left: 40},
+function drawChart() {
+  console.log('chart')
+var margin = {top: 20, right: 30, bottom: 30, left: 700},
     width = 1600 - margin.left - margin.right,
-    height = 700 - margin.top - margin.bottom,
+    height = 400 - margin.top - margin.bottom,
     padding = 0.3;
     
 var x = d3.scale.linear()
@@ -24,7 +26,7 @@ var chart = d3.select(".chart")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.csv("gr_js_count.csv", type, function(error, data) {
+d3.csv("gr_js_count.csv", function(error, data) {
 
   // data.push({
   //   name: 'Total',
@@ -49,8 +51,10 @@ d3.csv("gr_js_count.csv", type, function(error, data) {
   var bar = chart.selectAll(".bar")
       .data(data)
     .enter().append("g")
-      .attr("class", function(d) { return "bar " + d.title })
+      .attr("class", 'bar')
+      .attr('id', d => 'bar' + d.book_id)
       .attr("transform", function(d) { return "translate(" + x(d.start_num)+ ",0)"; })
+      .style("fill", 'steelblue')
 
   bar.append("rect")
       .attr("y", function(d) { return y(d.rn); })
@@ -70,17 +74,29 @@ d3.csv("gr_js_count.csv", type, function(error, data) {
   //     .attr("x2", x.rangeBand() / ( 1 - padding) - 5 )
   //     .attr("y2", function(d) { return y(d.end) } )
 });
-
-function type(d) {
-  d.value = +d.value;
-  return d;
 }
 
-function dollarFormatter(n) {
-  n = Math.round(n);
-  var result = n;
-  if (Math.abs(n) > 1000) {
-    result = Math.round(n/1000) + 'K';
-  }
-  return '$' + result;
-}
+function main() {
+  let offset = '75%';
+  console.log('main')
+  drawChart();
+
+  new Waypoint({
+    element: document.getElementById('step1'),
+    handler: function(direction) {
+      if (direction == 'down') {
+        console.log('Basic waypoint triggered')
+        d3.selectAll(".bar")
+          .transition().duration(1000)
+          .style("fill", 'red')
+    } 
+    else {
+        d3.selectAll(".bar")
+          .transition().duration(1000)
+          .style("fill", 'steelblue')
+            }
+        },
+    offset: offset
+  })}
+
+main();

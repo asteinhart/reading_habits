@@ -1,8 +1,5 @@
-.bar.total rect {
-    fill: steelblue;
-  }
-  
-  .bar.positive rect {
+
+    .bar.positive rect {
     fill: darkolivegreen;
   }
   .bar.negative rect {
@@ -30,3 +27,24 @@
     stroke: #000;
     shape-rendering: crispEdges;
   }
+
+.chartContainer {
+  position:sticky;
+  top:25%;
+  width: 80%;
+  margin: auto;
+  z-index: 1;
+}
+
+.scrollOnTop {
+  position: relative;
+  background-color: white;
+  border: 1px black solid;
+  padding: 10px 20px;
+  width: 40%;
+  margin-top: 90vh;
+  margin-bottom: 20vh;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  text-align: left;
+  z-index: 9999;
+}
