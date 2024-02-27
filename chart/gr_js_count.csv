@@ -1,0 +1,167 @@
+book_id,rn,title,author_first,author_last,n_pages,year_read,duration_days,date_start,start_num,date_read,end_num
+7728,1,"Antigone (The Theban Plays, #3)",Sophocles, Sophocles,80,2016,2,NA,NA,2016-02-01,1
+12651,2,The Social Contract,Rousseau, Jean-Jacques,168,2016,10,2016-02-01,1,2016-02-10,10
+51985,3,Existentialism is a Humanism,Sartre, Jean-Paul,122,2016,88,2016-02-10,10,2016-05-07,97
+13587167,4,Mean Genes: From Sex To Money To Food: Taming Our Primal Instincts,Burnham, Terry,320,2016,26,2016-05-07,97,2016-06-01,122
+25489625,5,Between the World and Me,Coates, Ta-Nehisi,152,2016,23,2016-06-01,122,2016-06-23,144
+16029162,6,Out of Order: Stories from the History of the Supreme Court,O'Connor, Sandra Day,256,2016,5,2016-06-23,144,2016-06-27,148
+20342617,7,Just Mercy,Stevenson, Bryan,336,2016,4,2016-06-27,148,2016-06-30,151
+5470,8,1984,Orwell, George,328,2016,7,2016-06-30,151,2016-07-06,157
+13689915,9,The U.S. Supreme Court: A Very Short Introduction,Greenhouse, Linda,144,2016,3,2016-07-06,157,2016-07-08,159
+18775383,10,Excellent Sheep: The Miseducation of the American Elite and the Way to a Meaningful Life,Deresiewicz, William,245,2016,7,2016-07-08,159,2016-07-14,165
+1518455,11,"Understanding Affirmative Action: Politics, Discrimination, and the Search for Justice",Kellough, J. Edward,176,2016,3,2016-07-14,165,2016-07-16,167
+17834864,12,The Divide: American Injustice in the Age of the Wealth Gap,Taibbi, Matt,416,2016,9,2016-07-16,167,2016-07-24,175
+92057,13,The Autobiography of Malcolm X,X, Malcolm,466,2016,10,2016-07-24,175,2016-08-02,184
+77203,14,The Kite Runner,Hosseini, Khaled,371,2016,14,2016-08-02,184,2016-08-15,197
+17690,15,The Trial,Kafka, Franz,255,2016,7,2016-08-15,197,2016-08-21,203
+7970829,16,Justice: What's the Right Thing to Do?,Sandel, Michael J.,320,2016,6,2016-08-21,203,2016-08-26,208
+148647,17,"A Matter of Interpretation: Federal Courts and the Law (The University Center for Human Values Series, 16)",Scalia, Antonin,176,2016,21,2016-08-26,208,2016-09-15,228
+2569072,18,The Big Sort: Why the Clustering of Like-Minded America is Tearing Us Apart,Bishop, Bill,384,2016,67,2016-09-15,228,2016-11-20,294
+5113,19,Franny and Zooey,Salinger, J.D.,201,2016,31,2016-11-20,294,2016-12-20,324
+25078,20,Savage Inequalities: Children in America's Schools,Kozol, Jonathan,262,2016,11,2016-12-20,324,2016-12-30,334
+7745,21,Fear and Loathing in Las Vegas,Thompson, Hunter S.,204,2017,4,2016-12-30,334,2017-01-02,337
+107212,22,"Let Them Eat Prozac: The Unhealthy Relationship Between the Pharmaceutical Industry and Depression (Medicine, Culture, and History)",Healy, David,351,2017,57,2017-01-02,337,2017-02-27,393
+11487820,23,Power and Constraint: The Accountable Presidency After 9/11,Goldsmith, Jack L.,336,2017,1,2017-02-27,393,2017-02-27,393
+135479,24,Cat's Cradle,Jr., Kurt Vonnegut,179,2017,16,2017-02-27,393,2017-03-14,408
+5129,25,Brave New World,Huxley, Aldous,268,2017,75,2017-03-14,408,2017-05-27,482
+6149,26,Beloved,Morrison, Toni,324,2017,38,2017-05-27,482,2017-07-03,519
+464260,27,The Fire Next Time,Baldwin, James,106,2017,4,2017-07-03,519,2017-07-06,522
+25852784,28,Evicted: Poverty and Profit in the American City,Desmond, Matthew,418,2017,9,2017-07-06,522,2017-07-14,530
+9742,29,The Audacity of Hope: Thoughts on Reclaiming the American Dream,Obama, Barack,375,2017,26,2017-07-14,530,2017-08-08,555
+36529,30,Narrative of the Life of Frederick Douglass,Douglass, Frederick,158,2017,9,2017-08-08,555,2017-08-16,563
+890,31,Of Mice and Men,Steinbeck, John,107,2017,2,2017-08-16,563,2017-08-17,564
+25541028,32,"Elon Musk: Tesla, SpaceX, and the Quest for a Fantastic Future",Vance, Ashlee,392,2017,8,2017-08-17,564,2017-08-24,571
+4406,33,East of Eden,Steinbeck, John,601,2017,26,2017-08-24,571,2017-09-18,596
+412732,34,The Dharma Bums,Kerouac, Jack,244,2018,106,2017-09-18,596,2018-01-01,701
+39286958,35,Measure What Matters,Doerr, John,299,2018,205,2018-01-01,701,2018-07-24,905
+25733957,36,"For White Folks Who Teach in the Hood... and the Rest of Y'all Too: Reality Pedagogy and Urban Education (Race, Education, and Democracy)",Emdin, Christopher,232,2018,3,2018-07-24,905,2018-07-26,907
+13588394,37,The Signal and the Noise: Why So Many Predictions Fail—But Some Don't,Silver, Nate,544,2019,223,2018-07-26,907,2019-03-05,1129
+28186015,38,Weapons of Math Destruction: How Big Data Increases Inequality and Threatens Democracy,O'Neil, Cathy,259,2019,14,2019-03-05,1129,2019-03-18,1142
+152504,39,The Dreamkeepers: Successful Teachers of African American Children,Ladson-Billings, Gloria,187,2019,30,2019-03-18,1142,2019-04-16,1171
+25159334,40,Pushout: The Criminalization of Black Girls in Schools,Morris, Monique W.,277,2019,20,2019-04-16,1171,2019-05-05,1190
+35133922,41,Educated,Westover, Tara,352,2019,69,2019-05-05,1190,2019-07-12,1258
+32191706,42,The Color of Law: A Forgotten History of How Our Government Segregated America,Rothstein, Richard,368,2019,11,2019-07-12,1258,2019-07-22,1268
+34273236,43,Little Fires Everywhere,Ng, Celeste,338,2019,7,2019-07-22,1268,2019-07-28,1274
+129984,44,Big Fish,Wallace, Daniel,192,2019,12,2019-07-28,1274,2019-08-08,1285
+17286670,45,Scarcity: Why Having Too Little Means So Much,Mullainathan, Sendhil,304,2019,18,2019-08-08,1285,2019-08-25,1302
+41949311,46,Someone Who Will Love You in All Your Damaged Glory,Bob-Waksberg, Raphael,256,2019,21,2019-08-25,1302,2019-09-14,1322
+38598541,47,The Master's Tools Will Never Dismantle the Master's House,Lorde, Audre,51,2019,9,2019-09-14,1322,2019-09-22,1330
+49623822,48,The Perks of Being a Wallflower,Chbosky, Stephen,224,2019,8,2019-09-22,1330,2019-09-29,1337
+37976541,49,Bad Blood: Secrets and Lies in a Silicon Valley Startup,Carreyrou, John,339,2019,57,2019-09-29,1337,2019-11-24,1393
+29780253,50,Born a Crime: Stories From a South African Childhood,Noah, Trevor,289,2019,16,2019-11-24,1393,2019-12-09,1408
+26240789,51,"The New Urban Crisis: How Our Cities Are Increasing Inequality, Deepening Segregation, and Failing the Middle Class—and What We Can Do About It",Florida, Richard,336,2019,10,2019-12-09,1408,2019-12-18,1417
+30962055,52,Irresistible: The Rise of Addictive Technology and the Business of Keeping Us Hooked,Alter, Adam,368,2019,6,2019-12-18,1417,2019-12-23,1422
+34964830,53,"Automating Inequality: How High-Tech Tools Profile, Police, and Punish the Poor",Eubanks, Virginia,260,2019,4,2019-12-23,1422,2019-12-26,1425
+41104077,54,Invisible Women: Data Bias in a World Designed for Men,Pérez, Caroline Criado,448,2020,9,2019-12-26,1425,2020-01-03,1433
+43126457,55,Trick Mirror: Reflections on Self-Delusion,Tolentino, Jia,303,2020,13,2020-01-03,1433,2020-01-15,1445
+43708708,56,White Fragility: Why It’s So Hard for White People to Talk About Racism,DiAngelo, Robin,7,2020,13,2020-01-15,1445,2020-01-27,1457
+44244975,57,The Ethical Algorithm: The Science of Socially Aware Algorithm Design,Kearns, Michael,232,2020,6,2020-01-27,1457,2020-02-01,1462
+43452877,58,"Boys & Sex: Young Men on Hookups, Love, Porn, Consent, and Navigating the New Masculinity",Orenstein, Peggy,304,2020,12,2020-02-01,1462,2020-02-12,1473
+43722897,59,The Art of Statistics: How to Learn from Data,Spiegelhalter, David,448,2020,5,2020-02-12,1473,2020-02-16,1477
+33585392,60,"Dear Ijeawele, or A Feminist Manifesto in Fifteen Suggestions",Adichie, Chimamanda Ngozi,63,2020,9,2020-02-16,1477,2020-02-24,1485
+22738563,61,We Should All Be Feminists,Adichie, Chimamanda Ngozi,65,2020,1,2020-02-24,1485,2020-02-24,1485
+37506348,62,Winners Take All: The Elite Charade of Changing the World,Giridharadas, Anand,288,2020,3,2020-02-24,1485,2020-02-26,1487
+28512671,63,"Everybody Lies: Big Data, New Data, and What the Internet Can Tell Us About Who We Really Are",Stephens-Davidowitz, Seth,338,2020,7,2020-02-26,1487,2020-03-03,1493
+49556729,64,"Politics Is for Power: How to Move Beyond Political Hobbyism, Take Action, and Make Real Change",Hersh, Eitan D.,288,2020,21,2020-03-03,1493,2020-03-23,1513
+38746485,65,Becoming,Obama, Michelle,426,2020,14,2020-03-23,1513,2020-04-05,1526
+18693771,66,"The Body Keeps the Score: Brain, Mind, and Body in the Healing of Trauma",Kolk, Bessel van der,464,2020,11,2020-04-05,1526,2020-04-15,1536
+1633,67,Getting Things Done: The Art of Stress-Free Productivity,Allen, David,267,2020,5,2020-04-15,1536,2020-04-19,1540
+33916061,68,We Were Eight Years in Power: An American Tragedy,Coates, Ta-Nehisi,367,2020,12,2020-04-19,1540,2020-04-30,1551
+20613761,69,Citizen: An American Lyric,Rankine, Claudia,169,2020,7,2020-04-30,1551,2020-05-06,1557
+32027331,70,The Power of Positive Leadership: How and Why Positive Leaders Transform Teams and Organizations and Change the World,Gordon, Jon,208,2020,7,2020-05-06,1557,2020-05-12,1563
+17118702,71,"Crucial Accountability: Tools for Resolving Violated Expectations, Broken Commitments, and Bad Behavior, Second Edition ( Paperback)",Patterson, Kerry,304,2020,4,2020-05-12,1563,2020-05-15,1566
+17910054,72,The Sixth Extinction: An Unnatural History,Kolbert, Elizabeth,336,2020,3,2020-05-15,1566,2020-05-17,1568
+44284906,73,Little Weirds,Slate, Jenny,304,2020,6,2020-05-17,1568,2020-05-22,1573
+15014,74,Crucial Conversations: Tools for Talking When Stakes are High,Patterson, Kerry,240,2020,3,2020-05-22,1573,2020-05-24,1575
+37007779,75,"Give People Money: How a Universal Basic Income Would End Poverty, Revolutionize Work, and Remake the World",Lowrey, Annie,272,2020,8,2020-05-24,1575,2020-05-31,1582
+31213015,76,Becoming Ms. Burton: From Prison to Recovery to Leading the Fight for Incarcerated Women,Burton, Susan,228,2020,17,2020-05-31,1582,2020-06-16,1598
+25734059,77,"At the Existentialist Café: Freedom, Being, and Apricot Cocktails with Jean-Paul Sartre, Simone de Beauvoir, Albert Camus, Martin Heidegger, Maurice Merleau-Ponty and Others",Bakewell, Sarah,327,2020,17,2020-06-16,1598,2020-07-02,1614
+6596,78,The Four Agreements,Ruiz, Miguel,152,2020,3,2020-07-02,1614,2020-07-04,1616
+29939161,79,Radical Candor: Be a Kickass Boss Without Losing Your Humanity,Scott, Kim Malone,336,2020,1,2020-07-04,1616,2020-07-04,1616
+35631386,80,The Undoing Project: A Friendship That Changed Our Minds,Lewis, Michael,368,2020,12,2020-07-04,1616,2020-07-15,1627
+39507318,81,The Library Book,Orlean, Susan,317,2020,4,2020-07-15,1627,2020-07-18,1630
+25666050,82,Algorithms to Live By: The Computer Science of Human Decisions,Christian, Brian,368,2020,9,2020-07-18,1630,2020-07-26,1638
+43330899,83,A Liberated Mind: How to Pivot Toward What Matters,Hayes, Steven C.,448,2020,8,2020-07-26,1638,2020-08-02,1645
+41795733,84,Range: Why Generalists Triumph in a Specialized World,Epstein, David,352,2020,8,2020-08-02,1645,2020-08-09,1652
+51231889,85,Nobody Will Tell You This But Me: A True (as Told to Me) Story,Kalb, Bess,224,2020,3,2020-08-09,1652,2020-08-11,1654
+40265832,86,How to Be an Antiracist,Kendi, Ibram X.,305,2020,6,2020-08-11,1654,2020-08-16,1659
+37570546,87,Maybe You Should Talk to Someone,Gottlieb, Lori,415,2020,15,2020-08-16,1659,2020-08-30,1673
+53260197,88,Ghosting the News: Local Journalism and the Crisis of American Democracy,Sullivan, Margaret,105,2020,8,2020-08-30,1673,2020-09-06,1680
+29633913,89,"Emergent Strategy: Shaping Change, Changing Worlds (Emergent Strategy, #0)",Brown, Adrienne Maree,280,2020,17,2020-09-06,1680,2020-09-22,1696
+11989,90,The Plague,Camus, Albert,308,2020,5,2020-09-22,1696,2020-09-26,1700
+26535513,91,Storytelling with Data: A Data Visualization Guide for Business Professionals,Knaflic, Cole Nussbaumer,288,2020,2,2020-09-26,1700,2020-09-27,1701
+16280,92,Why Are All The Black Kids Sitting Together in the Cafeteria?,Tatum, Beverly Daniel,464,2020,25,2020-09-27,1701,2020-10-21,1725
+12609,93,"The Spirit Catches You and You Fall Down: A Hmong Child, Her American Doctors, and the Collision of Two Cultures",Fadiman, Anne,341,2020,6,2020-10-21,1725,2020-10-26,1730
+52766000,94,Big Friendship: How We Keep Each Other Close,Sow, Aminatou,256,2020,8,2020-10-26,1730,2020-11-02,1737
+978000,95,The Unbearable Lightness of Being,Kundera, Milan,314,2020,18,2020-11-02,1737,2020-11-19,1754
+25330220,96,From #BlackLivesMatter to Black Liberation,Taylor, Keeanga-Yamahtta,270,2020,8,2020-11-19,1754,2020-11-26,1761
+50196744,97,Know My Name,Miller, Chanel,384,2020,4,2020-11-26,1761,2020-11-29,1764
+52269471,98,Mindf*ck: Cambridge Analytica and the Plot to Break America,Wylie, Christopher,288,2020,3,2020-11-29,1764,2020-12-01,1766
+51152447,99,Caste: The Origins of Our Discontents,Wilkerson, Isabel,544,2020,15,2020-12-01,1766,2020-12-15,1780
+25899336,100,When Breath Becomes Air,Kalanithi, Paul,208,2020,4,2020-12-15,1780,2020-12-18,1783
+45186565,101,Uncanny Valley,Wiener, Anna,281,2021,23,2020-12-18,1783,2021-01-09,1805
+55225556,102,A Civic Technologist's Practice Guide,Harrell, Cyd,170,2021,6,2021-01-09,1805,2021-01-14,1810
+52578297,103,The Midnight Library,Haig, Matt,304,2021,5,2021-01-14,1810,2021-01-18,1814
+36613747,104,"How to Change Your Mind: What the New Science of Psychedelics Teaches Us About Consciousness, Dying, Addiction, Depression, and Transcendence",Pollan, Michael,480,2021,23,2021-01-18,1814,2021-02-09,1836
+60930,105,Bloodchild and Other Stories,Butler, Octavia E.,214,2021,6,2021-02-09,1836,2021-02-14,1841
+53138238,106,"The Three Mothers: How the Mothers of Martin Luther King, Jr., Malcolm X, and James Baldwin Shaped a Nation",Tubbs, Anna Malaika,261,2021,3,2021-02-14,1841,2021-02-16,1843
+55710304,107,Exhalation,Chiang, Ted,362,2021,14,2021-02-16,1843,2021-03-01,1856
+39074550,108,Humble Pi: A Comedy of Maths Errors,Parker, Matt,314,2021,11,2021-03-01,1856,2021-03-11,1866
+180463,109,Leadership and Self-Deception: Getting Out of the Box,Institute, The Arbinger,192,2021,5,2021-03-11,1866,2021-03-15,1870
+343684,110,The Apprentice: My Life in the Kitchen,Pépin, Jacques,336,2021,5,2021-03-15,1870,2021-03-19,1874
+52845775,111,Minor Feelings: An Asian American Reckoning,Hong, Cathy Park,209,2021,17,2021-03-19,1874,2021-04-04,1890
+40603783,112,The Defining Decade: Why Your Twenties Matter—And How to Make the Most of Them Now,Jay, Meg,273,2021,5,2021-04-04,1890,2021-04-08,1894
+1998185,113,Here Comes Everybody: The Power of Organizing Without Organizations,Shirky, Clay,336,2021,21,2021-04-08,1894,2021-04-28,1914
+53479786,114,The Purpose of Power: How We Come Together When We Fall Apart,Garza, Alicia,336,2021,33,2021-04-28,1914,2021-05-30,1946
+55421550,115,Power to the Public: The Promise of Public Interest Technology,McGuinness, Tara Dawson,208,2021,3,2021-05-30,1946,2021-06-01,1948
+223380,116,Stories of Your Life and Others,Chiang, Ted,281,2021,12,2021-06-01,1948,2021-06-12,1959
+54614578,117,How to Write One Song: Loving the Things We Create and How They Love Us Back,Tweedy, Jeff,176,2021,30,2021-06-12,1959,2021-07-11,1988
+16129174,118,Long Division,Laymon, Kiese,276,2021,7,2021-07-11,1988,2021-07-17,1994
+55145261,119,The Anthropocene Reviewed,Green, John,293,2021,4,2021-07-17,1994,2021-07-20,1997
+13525945,120,So Good They Can't Ignore You: Why Skills Trump Passion in the Quest for Work You Love,Newport, Cal,288,2021,20,2021-07-20,1997,2021-08-08,2016
+25744928,121,Deep Work: Rules for Focused Success in a Distracted World,Newport, Cal,296,2021,3,2021-08-08,2016,2021-08-10,2018
+9791,122,A Walk in the Woods: Rediscovering America on the Appalachian Trail,Bryson, Bill,397,2021,5,2021-08-10,2018,2021-08-14,2022
+52129515,123,Untamed,Doyle, Glennon,333,2021,18,2021-08-14,2022,2021-08-31,2039
+50489349,124,The Alignment Problem: Machine Learning and Human Values,Christian, Brian,496,2021,11,2021-08-31,2039,2021-09-10,2049
+383300,125,Let's Talk About Love: A Journey to the End of Taste,Wilson, Carl,176,2021,23,2021-09-10,2049,2021-10-02,2071
+54785515,126,Four Thousand Weeks: Time Management for Mortals,Burkeman, Oliver,273,2021,46,2021-10-02,2071,2021-11-16,2116
+57032570,127,Notes on Grief,Adichie, Chimamanda Ngozi,86,2021,10,2021-11-16,2116,2021-11-25,2125
+54860565,128,The Deeper the Roots,Tubbs, Michael,272,2021,20,2021-11-25,2125,2021-12-14,2144
+54814676,129,Crying in H Mart,Zauner, Michelle,256,2021,16,2021-12-14,2144,2021-12-29,2159
+50887097,130,"Why Fish Don't Exist: A Story of Loss, Love, and the Hidden Order of Life",Miller, Lulu,225,2022,39,2021-12-29,2159,2022-02-05,2197
+164397,131,Home Cooking: A Writer in the Kitchen,Colwin, Laurie,184,2022,9,2022-02-05,2197,2022-02-13,2205
+17607,132,All About Love: New Visions,hooks, bell,240,2022,48,2022-02-13,2205,2022-04-01,2252
+53317477,133,Living in Data: A Citizen's Guide to a Better Information Future,Thorp, Jer,320,2022,15,2022-04-01,2252,2022-04-15,2266
+1319,134,The War of Art: Winning the Inner Creative Battle,Pressfield, Steven,168,2022,7,2022-04-15,2266,2022-04-21,2272
+7815,135,The Year of Magical Thinking,Didion, Joan,227,2022,9,2022-04-21,2272,2022-04-29,2280
+157993,136,The Little Prince,Saint-Exupéry, Antoine de,96,2022,18,2022-04-29,2280,2022-05-16,2297
+51700803,137,Eat a Peach,Chang, David,288,2022,18,2022-05-16,2297,2022-06-02,2314
+41940285,138,"User Friendly: How the Hidden Rules of Design Are Changing the Way We Live, Work, and Play",Kuang, Cliff,416,2022,49,2022-06-02,2314,2022-07-20,2362
+51733706,139,Afterparties,So, Anthony Veasna,272,2022,18,2022-07-20,2362,2022-08-06,2379
+57992951,140,Patriarchy Blues: Reflections on Manhood,Joseph, Frederick,272,2022,2,2022-08-06,2379,2022-08-07,2380
+9547888,141,Attached: The New Science of Adult Attachment and How It Can Help You Find—and Keep—Love,Levine, Amir,304,2022,99,2022-08-07,2380,2022-11-13,2478
+23129659,142,"Adult Children of Emotionally Immature Parents: How to Heal from Distant, Rejecting, or Self-Involved Parents",Gibson, Lindsay C.,201,2022,47,2022-11-13,2478,2022-12-29,2524
+59900070,143,Stay True,Hsu, Hua,208,2022,2,2022-12-29,2524,2022-12-30,2525
+17601,144,"The Will to Change: Men, Masculinity, and Love",hooks, bell,208,2023,35,2022-12-30,2525,2023-02-02,2559
+60524224,145,The Intimate City: Walking New York,Kimmelman, Michael,272,2023,34,2023-02-02,2559,2023-03-07,2592
+6334,146,Never Let Me Go,Ishiguro, Kazuo,288,2023,8,2023-03-07,2592,2023-03-14,2599
+22002165,147,The Big Disconnect: Why the Internet Hasn't Transformed Politics (Yet),Sifry, Micah L.,254,2023,17,2023-03-14,2599,2023-03-30,2615
+59516880,148,Quarterlife: The Search for Self in Early Adulthood,Byock, Satya Doyle,240,2023,12,2023-03-30,2615,2023-04-10,2626
+38357895,149,Convenience Store Woman,Murata, Sayaka,163,2023,30,2023-04-10,2626,2023-05-09,2655
+6798263,150,Bluets,Nelson, Maggie,112,2023,8,2023-05-09,2655,2023-05-16,2662
+37424706,151,The Art of Gathering: How We Meet and Why It Matters,Parker, Priya,304,2023,7,2023-05-16,2662,2023-05-22,2668
+58437521,152,The Candy House,Egan, Jennifer,352,2023,10,2023-05-22,2668,2023-05-31,2677
+53054943,153,The Jakarta Method: Washington's Anticommunist Crusade and the Mass Murder Program that Shaped Our World,Bevins, Vincent,320,2023,34,2023-05-31,2677,2023-07-03,2710
+40274525,154,Radical Help: How We Can Remake the Relationships Between Us and Revolutionise the Welfare State,Cottam, Hilary,286,2023,6,2023-07-03,2710,2023-07-08,2715
+59883574,155,Platonic: How the Science of Attachment Can Help You Make—and Keep—Friends,Franco, Marisa G.,336,2023,19,2023-07-08,2715,2023-07-26,2733
+58950980,156,Streets of Gold: America's Untold Story of Immigrant Success,Abramitzky, Ran,256,2023,28,2023-07-26,2733,2023-08-22,2760
+61796680,157,Recoding America: Why Government Is Failing in the Digital Age and How We Can Do Better,Pahlka, Jennifer,336,2023,6,2023-08-22,2760,2023-08-27,2765
+41057294,158,Normal People,Rooney, Sally,273,2023,6,2023-08-27,2765,2023-09-01,2770
+33947154,159,They Can't Kill Us Until They Kill Us,Abdurraqib, Hanif,291,2023,27,2023-09-01,2770,2023-09-27,2796
+14376,160,Einstein’s Dreams,Lightman, Alan,140,2023,6,2023-09-27,2796,2023-10-02,2801
+676543,161,The Story of Jane: The Legendary Underground Feminist Abortion Service,Kaplan, Laura,334,2023,26,2023-10-02,2801,2023-10-27,2826
+59564386,162,The Lonely Stories,Garrett, Natalie Eve,252,2023,29,2023-10-27,2826,2023-11-24,2854
+25667449,163,The Lonely City: Adventures in the Art of Being Alone,Laing, Olivia,336,2023,34,2023-11-24,2854,2023-12-27,2887
+17744,164,"The Visual Display of Quantitative Information, 2nd Ed.",Tufte, Edward R.,197,2023,5,2023-12-27,2887,2023-12-31,2891
+126262032,165,So Late in the Day: Stories of Women and Men,Keegan, Claire,128,2024,13,2023-12-31,2891,2024-01-12,2903
+30038960,166,"Insomniac City: New York, Oliver, and Me",Hayes, Bill,294,2024,15,2024-01-12,2903,2024-01-26,2917
