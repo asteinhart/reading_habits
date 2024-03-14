@@ -1,50 +1,88 @@
+@import url(https://fonts.googleapis.com/css?family=Public+Sans:400,400i,700,700i);
+@import url(https://fonts.googleapis.com/css?family=Merriweather:400,400i,700,700i);
 
-    .bar.positive rect {
-    fill: darkolivegreen;
-  }
-  .bar.negative rect {
-    fill: crimson;
-  }
-  
-  .bar line.connector {
-    stroke: grey;
-    stroke-dasharray: 3;
-  }
-  
-  .bar text {
-    fill: white;
-    font: 12px sans-serif;
-    text-anchor: middle;
-  }
-  
-  .axis text {
-    font: 10px sans-serif;
-  }
-  
-  .axis path,
-  .axis line {
-    fill: none;
-    stroke: #000;
-    shape-rendering: crispEdges;
-  }
+body {
+  font-family: 'Public Sans', Helvetica,sans-serif;
+  width: 720px;
+  padding: 1em;
+  margin: 0 auto;
+}
+
+.body-text {
+  font-size: 20px;
+  line-height: 1.56;
+  margin-bottom: 100px;
+}
+
+.tooltip {
+  font-size: 12px;
+  width: 30%;
+  margin-left: 30px;
+}
+
+.entry {
+	width: 900px;
+  padding: 0;
+  margin-left: -100px;
+}
+
+
+h2, h3, h4, h5 {
+  font-family: 'Merriweather',Helvetica,sans-serif;
+  font-weight: 700;
+
+} 
+
+.bar.positive rect {
+  fill: darkolivegreen;
+}
+.bar.negative rect {
+  fill: crimson;
+}
+
+.bar line.connector {
+  stroke: grey;
+  stroke-dasharray: 3;
+}
+
+.bar text {
+  fill: white;
+  font: 12px sans-serif;
+  text-anchor: middle;
+}
+
+.axis text {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
 
 .chartContainer {
   position:sticky;
-  top:25%;
-  width: 80%;
-  margin: auto;
   z-index: 1;
+  margin: auto;
+  top: 20%;
+  width:100%;
+  opacity: 0;
 }
 
-.scrollOnTop {
+.scroller {
   position: relative;
   background-color: white;
   border: 1px black solid;
   padding: 10px 20px;
+  /* margin-left: 100px; */
   width: 40%;
   margin-top: 90vh;
   margin-bottom: 20vh;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  text-align: left;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
   z-index: 9999;
 }
