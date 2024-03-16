@@ -17,8 +17,19 @@
         </div>
     </div>
     <div class = "body-text" id = "intro">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui blanditiis dolore dolores unde vitae dolorem nobis obcaecati recusandae. Itaque nisi ab porro rerum eaque, molestias similique distinctio corrupti enim possimus provident natus culpa consequatur tenetur praesentium eos id deleniti nostrum. Natus magni voluptatibus alias aliquam atque, deleniti modi ratione neque.</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui blanditiis dolore dolores unde vitae dolorem nobis obcaecati recusandae. Itaque nisi ab porro rerum eaque, molestias similique distinctio corrupti enim possimus provident natus culpa consequatur tenetur praesentium eos id deleniti nostrum. Natus magni voluptatibus alias aliquam atque, deleniti modi ratione neque.</p>
+        <p> As a child, I was a voracious reader, if only to rack up accelerated reader points (I clearly was a competitive child). However, this good hobby dropped off in high school. 
+            In 10th grade, I watched more movies in class than books I read, and in my 12th-grade literature class, I managed to read a whopping two of the required ten-plus books 
+            we were assigned to read over the school year. </p>
+        <p>As I started college, my two closest friends were English majors and wouldn't shut up about it. Their passion for books must have reinvigorated my love for reading as the first 
+            summer after college, i dove back into reading by setting an ambitious goal of reading a book a week over the summer (which i accomplished!). After this impassioned reentry into 
+            reading, I have considered myself a generally consistent reader. Follow along as I explore my reading journal over the last eight years.</p>
+        <button type="button" class="collapsible">Some comments about the data for those interested. </button>
+        <div class="content">
+                <p>I have tracked the date I finished every book I have read since 2016 on Goodreads (yes I know I should switch to the StoryGraph). I did not track the start date but since 
+                    I rarely read more than one book at a time, I imputed a start date using the completion date of the last book I had read. This methodology appears to exaggerated my average 
+                    reading rate. For example, it may appear it took me 30 days to read a book but in actuality, it may have taken a week but I did not start the book until 3 weeks after I 
+                    had finished the most recent book.  </p>
+        </div>
     </div>
     <div class="entry">
         <div class="chartContainer" id = 'intro-chart'>
@@ -26,11 +37,26 @@
             <div class="chart"></div>
         </div>
         <div class="scroller" id="step1">
-            <p>All Years</p>
+            <p>Here is every book I have read from Spring 2016 to Winter 2024. The y axis shows the total cumulative books I have read and the x axis shows
+                the date I was reading the book. Each bar represents a book and the length of the bar represents how long it took me to read it. However over each bar
+                to see which book it is.</p>
+        </div>
+        <div class="scroller" id="step1a">
+            <p>We are going to zoom in to four different periods to further explore my reading habits. </p>
         </div>
         <div class="scroller" id="step2">
-            <p>Summer 2016</p>
+            <p>In the summer of 2016, I kickstarted my reading by reading a book a week. I was exploring a possible career in law as well as working in my hometown 
+                which prompted me to explore more topics related to race and socioeconomic factors. Thus, most of the books have to do with sociology or law.  </p>
         </div>
+        <div class="scroller book left">
+            <img src="screenshots/malcolm-x.jpg" alt="image description" class = "book-img">
+            <p>College Years</p>
+        </div>
+        <div class="scroller book right">
+            <img src="screenshots/just-mercy.jpeg" alt="image description" class = "book-img">
+            <p>College Years</p>
+        </div>
+
         <div class="scroller" id="step3">
             <p>College Years</p>
         </div>
@@ -61,6 +87,9 @@
 
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui blanditiis dolore dolores unde vitae dolorem nobis obcaecati recusandae. Itaque nisi ab porro rerum eaque, molestias similique distinctio corrupti enim possimus provident natus culpa consequatur tenetur praesentium eos id deleniti nostrum. Natus magni voluptatibus alias aliquam atque, deleniti modi ratione neque.</p>
 
+    </div>
+    <div class="chartContainer" id = 'outro-chart'>
+        <div class="chart"></div>
     </div>
 
     <script src="js/main.js"></script>

@@ -1,3 +1,23 @@
+// dropdown button
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    }
+  });
+}
+
+
+
+
+
 const margin = {top: 20, right: 30, bottom: 30, left: 30},
       chartWidth = 900
       height = 400 - margin.top - margin.bottom,
@@ -56,8 +76,8 @@ function fullChartStart() {
   }
   var mousemove = function(d) {
     Tooltip
-      .html("<b> Book Title:</b> " + d.title + "</br>" + "<b> Author:</b> " + d.author_first +  " " + d.author_first +  "</br>" +"<b>Date Start:</b> " 
-            + d.start_tooltip +"</br>" + "<b> Date Finished: </b>" + d.end_tooltip + "</br>"+ "<b> Reading Duration:</b> " + d.duration_days + "</br>"+ "<b> Rating:</b> " + d.my_rating)
+      .html("<b> Book Title:</b> " + d.title + "</br>" + "<b> Author:</b> " + d.author_last +  " " + d.author_first +  "</br>" +"<b>Date Started:</b> " 
+            + d.start_tooltip +"</br>" + "<b> Date Finished: </b>" + d.end_tooltip + "</br>"+ "<b> Reading Duration:</b> " + d.duration_days + "</br>"+ "<b> Rating:</b> " + d.my_rating +"/5")
       .style("left", (d3.mouse(this)[0]+300) + "px")
       .style("top", (d3.mouse(this)[1]-500) + "px")
   }
@@ -89,8 +109,13 @@ d3.csv("data/gr_js_count.csv", function(error, data) {
   const maxDate = d3.max(data, d => d.date_read);
   const totalRead = d3.max(data, function(d) { return d.rn; })
   const barHeight = 10
+  const division1 = new Date("2019-04-16")
+  const division2 = new Date("2021-08-01")
+  const division3 = new Date("2022-03-07")
+  const division4 = new Date("2023-09-01")
+  var divisions = [division1, division2, division3,  division4]
 
-  
+
   x = d3.scaleTime()
     .range([0, chartWidth - margin.right])
     .domain([minDate, maxDate])
@@ -114,11 +139,12 @@ d3.csv("data/gr_js_count.csv", function(error, data) {
        .attr("class", 'bar')
        .attr('id', d => 'bar-' + d.book_id)
        .attr("transform", function(d) { return "translate(" + x(d.date_start)+ ",0)"; })
-       .style('fill', d => colorScale(d.n_pages))
+       .style('fill', 'steelblue')
+       //.style('fill', d => colorScale(d.n_pages))
      .append("rect")
       .transition()
       .duration(1500)
-      .attr("y", function(d) { return y(+d.rn); })
+      .attr("y", function(d) { return (y(+d.rn)-barHeight/2); })
       .attr("height", barHeight)
       .attr("width", function(d) { return (x(d.date_read) - x(d.date_start)); })
   
@@ -126,6 +152,22 @@ d3.csv("data/gr_js_count.csv", function(error, data) {
     .on("mouseover", mouseover)
     .on("mousemove", mousemove)
     .on("mouseleave", mouseleave)
+
+
+  for (const division of divisions) {
+    chart.append("line")
+      .transition()
+      .attr("class", "divisions")
+      .attr("x1", x(division))  //<<== change your code here
+      .attr("y1", 0)
+      .attr("x2", x(division))  //<<== and here
+      .attr("y2", height)
+      .style("stroke-width", 2)
+      .style("stroke", "black")
+      .style("stroke-dasharray", ("3, 3")) 
+      .style("fill", "none")
+      .style("opacity", "0");
+      }
 
   // bar.append("text")
   //     .attr("x", x.rangeBand() / 2)
@@ -224,6 +266,7 @@ function panChart(startDate,endDate, barHeight) {
       chart.select("#x-axis")
         .transition().duration(1000)
         .call(d3.axisBottom(x)
+          .ticks(d3.timeMonth.every(2))
           .tickFormat(d3.timeFormat("%b %Y")))
       
       // Update Y axis
@@ -239,10 +282,10 @@ function panChart(startDate,endDate, barHeight) {
       var bars = chart.selectAll('.bar').data(data)
       
 
-      bars
-      .filter(function(d) {
-        return parseDate(d.date_start) > startDate & parseDate(d.date_read) <=  endDate;
-            }).exit().remove()
+      // bars
+      // .filter(function(d) {
+      //   return parseDate(d.date_start) > startDate & parseDate(d.date_read) <=  endDate;
+      //       }).exit().remove()
 
       bars
         .transition()
@@ -252,6 +295,9 @@ function panChart(startDate,endDate, barHeight) {
           .attr("y", function(d) { return y(d.rn); })
           .attr("height", barHeight)
           .attr("width", function(d) { return (x(d.date_read) - x(d.date_start));});
+
+      //d3.select("#svg").attr('clip-path', 'url(#clip)')
+
 
       // exit_bars = chart.selectAll('.bar')
       //     .data(fil)
@@ -289,6 +335,7 @@ function summer2016() {
     chart.select("#x-axis")
       .transition().duration(1000)
       .call(d3.axisBottom(x)
+        .ticks(d3.timeMonth.every(1))
         .tickFormat(d3.timeFormat("%b %Y")))
     
     // Update Y axis
@@ -321,8 +368,8 @@ function collegeChart() {
 
   d3.csv("data/gr_js_count.csv", function(error, data) {
       var parseDate = d3.timeParse("%Y-%m-%d")
-      startDate = new Date("2019-04-16")
-      fil = data.filter(function(d) { return parseDate(d.date_start) <= startDate});
+      endDate = new Date("2019-04-16")
+      fil = data.filter(function(d) { return parseDate(d.date_start) <= endDate});
   
       data.forEach(function(d){
         // parse strings into date object or numbers
@@ -332,7 +379,6 @@ function collegeChart() {
       })
       const maxDate = d3.max(fil, d => d.date_read);
       const minDate = d3.min(fil, d => d.date_start);
-      const barHeight = (maxDate - minDate) /BAR_SCALE
   
       // Update X axis
       x = d3.scaleTime()
@@ -351,47 +397,47 @@ function collegeChart() {
   
       chart.select("#y-axis").transition().duration(1000).call(d3.axisLeft(y));
   
-  //shading
-var parseDate = d3.timeParse("%Y-%m-%d");
+        //shading
+      var parseDate = d3.timeParse("%Y-%m-%d");
 
- summers.forEach(function (d) {
-    d.start = parseDate(d.start);
-    d.end = parseDate(d.end);
-  })
+      summers.forEach(function (d) {
+          d.start = parseDate(d.start);
+          d.end = parseDate(d.end);
+        })
 
-  console.log("summer")
-  console.log(summers[0].start)
+        console.log("summer")
+        console.log(summers[0].start)
 
-  d3.select("#g-chart").selectAll(".shading")   
-    .data(summers)
-    .enter()
-    .append("rect")
-      .attr("class", "shading")
-      .attr("x", function(d) { return x(d.start); })
-      .attr("y", 0)
-      .attr("width", function(d) { return (x(d.end)- x(d.start)); })
-      .attr("height", height)
-      .attr("opacity", 0)
-      .attr("fill", "#a3cdf0")
+        d3.select("#g-chart").selectAll(".shading")   
+          .data(summers)
+          .enter()
+          .append("rect")
+            .attr("class", "shading")
+            .attr("x", function(d) { return x(d.start); })
+            .attr("y", 0)
+            .attr("width", function(d) { return (x(d.end)- x(d.start)); })
+            .attr("height", height)
+            .attr("opacity", 0)
+            .attr("fill", "#a3cdf0")
 
-  d3.selectAll(".shading").transition().delay(500).duration(1500).attr("opacity", 0.2)   
-  
-  // Update chart
-  var bars = chart.selectAll('.bar')
-  .data(data)
+        d3.selectAll(".shading").transition().delay(500).duration(1500).attr("opacity", 0.2)   
+        
+        // Update chart
+        var bars = chart.selectAll('.bar')
+        .data(data)
 
-bars
-  .enter()
-  .append("g")
-  .merge(bars)
-  .transition()
-  .duration(1000)
-  .attr("transform", function(d) { return "translate(" + x(d.date_start)+ ",0)"; })
-  .selectAll("rect")
-    .attr("y", function(d) { return y(d.rn); })
-    .attr("height", 12)
-    .attr("width", function(d) { return (x(d.date_read) - x(d.date_start));});
-})
+      bars
+        .enter()
+        .append("g")
+        .merge(bars)
+        .transition()
+        .duration(1000)
+        .attr("transform", function(d) { return "translate(" + x(d.date_start)+ ",0)"; })
+        .selectAll("rect")
+          .attr("y", function(d) { return y(d.rn); })
+          .attr("height", 15)
+          .attr("width", function(d) { return (x(d.date_read) - x(d.date_start));});
+      })
 }
 
 const barHeight4 = 10
@@ -401,7 +447,7 @@ const barHeight4 = 10
       
 
 function main() {
-  let offset = '60%';
+  let offset = '80%';
   console.log('main')
   fullChartStart();
 
@@ -420,11 +466,31 @@ function main() {
       d3.select('.chartContainer')
       .transition()
       .duration(1000)
-      .style("opacity", '1')
+      .style("opacity", '0')
     }
         },
     offset: offset
   });
+  // add lines for periods
+  new Waypoint({
+    element: document.getElementById('step1a'),
+    handler: function(direction) {
+      if (direction == 'down') {
+        d3.selectAll('.divisions')
+        .transition()
+        .duration(1000)
+        .style("opacity", '1')
+    } else {
+        d3.selectAll('.divisions')
+        .transition()
+        .duration(1000)
+        .style("opacity", '0')
+      }
+        },
+    offset: offset
+  });
+
+  step1a
 
   // zoom into 2019
   new Waypoint({
@@ -432,6 +498,9 @@ function main() {
     handler: function(direction) {
       if (direction == 'down') {
         // 2 summer 2016
+        d3.selectAll('.divisions')
+        //.transition()
+        .style("opacity", '0')
         summer2016();
       } else {
         fullChartRefresh();
