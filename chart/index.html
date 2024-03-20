@@ -13,7 +13,9 @@
         <div class="title-info">
             <h1>My Reading Habits</h1>
             <p>Follow the journey of my reading habits.</p>
-            <p class="byline">By Austin Steinhart | Spring 2024</p>
+            <p class="byline">By <a href="https://asteinhart.github.io/" class="link"
+                >Austin Steinhart</a
+              >  | Spring 2024</p>
         </div>
     </div>
     <div class = "body-text" id = "intro">
@@ -23,7 +25,7 @@
         <p>As I started college, my two closest friends were English majors and wouldn't shut up about it. Their passion for books must have reinvigorated my love for reading as the first 
             summer after college, i dove back into reading by setting an ambitious goal of reading a book a week over the summer (which i accomplished!). After this impassioned reentry into 
             reading, I have considered myself a generally consistent reader. Follow along as I explore my reading journal over the last eight years.</p>
-        <button type="button" class="collapsible">Some comments about the data for those interested. </button>
+        <button type="button" class="collapsible">&#9654 Some comments about the data for those interested. </button>
         <div class="content">
                 <p>I have tracked the date I finished every book I have read since 2016 on Goodreads (yes I know I should switch to the StoryGraph). I did not track the start date but since 
                     I rarely read more than one book at a time, I imputed a start date using the completion date of the last book I had read. This methodology appears to exaggerated my average 
@@ -33,63 +35,83 @@
     </div>
     <div class="entry">
         <div class="chartContainer" id = 'intro-chart'>
-            <h3>My Reading Habits</h3>
             <div class="chart"></div>
         </div>
         <div class="scroller" id="step1">
             <p>Here is every book I have read from Spring 2016 to Winter 2024. The y axis shows the total cumulative books I have read and the x axis shows
-                the date I was reading the book. Each bar represents a book and the length of the bar represents how long it took me to read it. However over each bar
-                to see which book it is.</p>
+                the date I was reading the book. Each bar represents a book and the length of the bar represents how long it took me to read it. </p>
         </div>
         <div class="scroller" id="step1a">
-            <p>We are going to zoom in to four different periods to further explore my reading habits. </p>
+            <p>For example, here are two books, Beloved and User Friendly.</p>
+        </div>
+        <div class="scroller book left">
+            <div class = "book-img"> 
+                <img src="images/beloved.jpg" alt="image description">
+            </div>
+            <div class = "book-info" id = "beloved"> 
+                <b> Book Title:</b> <br>Beloved <br> 
+                <b> Author:</b> <br>Toni Morrison</br>
+            </div>
+        </div>
+        <div class="scroller book right">
+            <div class = "book-img"> 
+                <img src="images/user-friendly.jpg" alt="image description">
+            </div>
+            <div class = "book-info" id = "user-friendly"> 
+                <b> Book Title:</b> <br>User Friendly <br> 
+                <b> Author:</b> <br>Cliff Kuang and Robert Fabricant</br>
+            </div>
+        </div>
+
+        <div class="scroller" id="step1b">
+            <p>You can also hover over each bar to see which book it is. </p>
+        </div>
+
+        <div class="scroller" id="step1c">
+            <p>We are going to zoom in to five different periods to further explore my reading habits. </p>
         </div>
         <div class="scroller" id="step2">
-            <p>In the summer of 2016, I kickstarted my reading by reading a book a week. I was exploring a possible career in law as well as working in my hometown 
+            <p>In the  <span class="college-text">summer of 2016</span>, I kickstarted my reading by reading a book a week. I was exploring a possible career in law as well as working in my hometown 
                 which prompted me to explore more topics related to race and socioeconomic factors. Thus, most of the books have to do with sociology or law.  </p>
         </div>
         <div class="scroller book left">
-            <img src="screenshots/malcolm-x.jpg" alt="image description" class = "book-img">
-            <p>College Years</p>
+            <div class = "book-img"> 
+                <img src="images/malcolm-x.jpg" alt="image description">
+            </div>
+            <div class = "book-info" id = "malcolm-x"> 
+                <b> Book Title:</b> <br>The Autobiography of Malcolm X <br> 
+                <b> Author:</b> <br>Malcolm X</br>
+            </div>
         </div>
+
         <div class="scroller book right">
-            <img src="screenshots/just-mercy.jpeg" alt="image description" class = "book-img">
-            <p>College Years</p>
+            <div class = "book-img"> 
+                <img src="images/just-mercy.jpeg" alt="image description">
+            </div>
+            <div class = "book-info" id = "malcolm-x"> 
+                <b> Book Title:</b> <br>Just Mercy <br> 
+                <b> Author:</b> <br>Bryan Stevenson</br>
+            </div>
         </div>
 
         <div class="scroller" id="step3">
-            <p>College Years</p>
+            <p>Overall, I had a hot start, first half of college where I read on average  <span class="college-text"> 1.8 books a month </span>. The second half where I only read <span class="grey-text"> 0.4 books a month </span>. </p>
         </div>
         <div class="scroller" id="step4">
-            <p>Post College / COVID</p>
+            <p> As I settled into full time work and the <span class="covid-text"> COVID-19 </span> began, somehow I had my most consistent period of reading. During this time I averaged <span class="covid-text"> 3.2 books a month</span> and reached my all time high for books in a year reading 47 books in 2020.</p>
         </div>
         <div class="scroller" id="step5">
-            <p>Moving to NYC</p>
+            <p>In October 2021, I started a new job and soon after <span class="moving-text">moved</span> to New York City in the start of 2022. Through all this transitions, my reading took a bit of hit as I averged only <span class="grey-text"> 1.2 books a month </span></p>
         </div>
         <div class="scroller" id="step6">
-            <p>Living in NYC</p>
+            <p>Outside of a <span class="grey-text">small slowdown</span> in the fall of 2022, my reading picked back up in 2022 and 2023 as I read <span class="nyc-text">1.9 books a month</span>.</p>
         </div>
         <div class="scroller" id="step7">
-            <p>Start Grad School</p>
+            <p>In the fall of 2023, I began <span class="grad-text">graduate school</span> and my reading slowed down again to <span class="grey-text">1.7 books a month</span>.</p>
         </div>
         <div class="scroller" id="step8">
             <p>Total Again</p>
         </div>
-        <div class="scroller" style="opacity:0;">
-            &nbsp;
-        </div>
-    </div>
-    <div class = "body-text" id = "outro">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui blanditiis dolore dolores unde vitae dolorem nobis obcaecati recusandae. Itaque nisi ab porro rerum eaque, molestias similique distinctio corrupti enim possimus provident natus culpa consequatur tenetur praesentium eos id deleniti nostrum. Natus magni voluptatibus alias aliquam atque, deleniti modi ratione neque.</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui blanditiis dolore dolores unde vitae dolorem nobis obcaecati recusandae. Itaque nisi ab porro rerum eaque, molestias similique distinctio corrupti enim possimus provident natus culpa consequatur tenetur praesentium eos id deleniti nostrum. Natus magni voluptatibus alias aliquam atque, deleniti modi ratione neque.</p>
-
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui blanditiis dolore dolores unde vitae dolorem nobis obcaecati recusandae. Itaque nisi ab porro rerum eaque, molestias similique distinctio corrupti enim possimus provident natus culpa consequatur tenetur praesentium eos id deleniti nostrum. Natus magni voluptatibus alias aliquam atque, deleniti modi ratione neque.</p>
-
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui blanditiis dolore dolores unde vitae dolorem nobis obcaecati recusandae. Itaque nisi ab porro rerum eaque, molestias similique distinctio corrupti enim possimus provident natus culpa consequatur tenetur praesentium eos id deleniti nostrum. Natus magni voluptatibus alias aliquam atque, deleniti modi ratione neque.</p>
-
-    </div>
-    <div class="chartContainer" id = 'outro-chart'>
-        <div class="chart"></div>
     </div>
 
     <script src="js/main.js"></script>

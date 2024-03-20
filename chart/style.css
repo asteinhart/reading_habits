@@ -1,8 +1,17 @@
 @import url(https://fonts.googleapis.com/css?family=Public+Sans:400,400i,700,700i);
 @import url(https://fonts.googleapis.com/css?family=Merriweather:400,400i,700,700i);
 
-button, body {
-  font-family: 'Public Sans', Helvetica,sans-serif;
+:root {
+  --collegeColor: #8B80F9;
+  --covidColor: #BEE3DB;
+  --movingColor: #2A7F62;
+  --nycColor: #EE964B;
+  --gradColor: #F95738;
+}
+
+button,
+body {
+  font-family: "Public Sans", Helvetica, sans-serif;
   width: 720px;
   padding: 1em;
   margin: 0 auto;
@@ -11,7 +20,7 @@ button, body {
 .body-text {
   font-size: 18px;
   line-height: 1.56;
-  margin-bottom: 100px;
+  margin-bottom: 0;
 }
 
 .tooltip {
@@ -21,38 +30,25 @@ button, body {
 }
 
 .entry {
-	width: 900px;
+  width: 900px;
   padding: 0;
   margin-left: -100px;
 }
 
-
-h2, h3, h4, h5 {
-  font-family: 'Merriweather',Helvetica,sans-serif;
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Merriweather", Helvetica, sans-serif;
   font-weight: 700;
-
-} 
-
-.bar.positive rect {
-  fill: darkolivegreen;
-}
-.bar.negative rect {
-  fill: crimson;
 }
 
-.bar line.connector {
-  stroke: grey;
-  stroke-dasharray: 3;
-}
-
-.bar text {
-  fill: white;
-  font: 12px sans-serif;
-  text-anchor: middle;
+.y-label {
+  font-size: 14px;
 }
 
 .axis text {
-  font: 10px sans-serif;
+  font-size: 10px;
 }
 
 .axis path,
@@ -63,11 +59,11 @@ h2, h3, h4, h5 {
 }
 
 .chartContainer {
-  position:sticky;
+  position: sticky;
   z-index: 1;
   margin: auto;
   top: 20%;
-  width:100%;
+  width: 100%;
   opacity: 0;
 }
 
@@ -84,37 +80,58 @@ h2, h3, h4, h5 {
   text-align: left;
   margin-right: auto;
   margin-left: auto;
+  line-height: 1.2;
   z-index: 9999;
 }
 
-.scroller.book{
-  position: relative;
-  background-color: white;
-  border: 1px black solid;
-  padding: 10px 20px;
+#step1 {
+  margin-top: 10vh;
+}
+
+#step8 {
+  margin-bottom: 1000vh;
+}
+
+.book {
   /* margin-left: 100px; */
-  width: 10%;
-  margin-top: 20vh;
+  width: 30%;
+  margin-top: 30vh;
   margin-bottom: 20vh;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  text-align: center;
   z-index: 9999;
+  display: flex;
+  max-height: 20vh;
 }
- .scroller.book.left {
-  margin-left: 75px;
- }
- .scroller.book.right {
-  margin-right: 75px;
- }
+.scroller.book.left {
+  margin-left: 85px;
+}
 
+.scroller.book.right {
+  margin-right: 40px;
+}
+
+.book-info {
+  justify-content: center;
+  align-content: center;
+  font-size: 14px;
+  -ms-flex: 0 0 66.67%;
+  flex: 0 0 66.67%;
+  max-width: 66.67%;
+  padding: 0 5px 0 5px;
+;}
+
+img {
+  width: 100%;
+  max-height: 100%;
+}
 
 
 .book-img {
+  display: block;
+  -ms-flex: 0 0 33.333333%;
+  flex: 0 0 33.333333%;
+  max-width: 33.333333%;
   width: 100%;
-  display: inline;
-  margin-left: 0;
-  margin-right: 0;
-
 }
 
 button {
@@ -133,10 +150,6 @@ button {
   background-color: white;
 }
 
-.collapsible:hover {
-  background-color: #d9d9d9;
-}
-
 .content {
   padding: 0 18px;
   background-color: white;
@@ -144,3 +157,69 @@ button {
   overflow: hidden;
   transition: max-height 0.2s ease-out;
 }
+
+/* .collapsible:hover {
+  text-decoration: underline;
+} */
+
+.link {
+  color: black;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+#college-1 {
+  fill: red;
+  font-weight: 500;
+  color: red;
+}
+
+.college-text {
+  background-color: var(--collegeColor);
+  font-weight: 600;
+  border-radius: 5px;
+}
+
+.covid-text {
+  background-color: var(--covidColor);
+  font-weight: 600;
+  border-radius: 5px;
+}
+
+.moving-text {
+  background-color: var(--movingColor);
+  font-weight: 600;
+  border-radius: 5px;
+}
+
+.nyc-text {
+  background-color: var(--nycColor);
+  font-weight: 600;
+  border-radius: 5px;
+}
+
+.grad-text {
+  background-color: var(--gradColor);
+  font-weight: 600;
+  border-radius: 5px;
+}
+
+.grey-text {
+  background-color: #cfd1d3;
+  font-weight: 600;
+  border-radius: 5px;
+}
+
+
+.periods.text {
+  font-weight: 600;
+  z-index: 9999;
+}
+
+span { 
+  padding-left: 3px; 
+  padding-right: 3px; 
+} 
