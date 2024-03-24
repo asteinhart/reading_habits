@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="http://d3js.org/d3.v4.min.js"></script>
+    <script src="https://d3js.org/d3-delaunay.v6.min.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css" /> 
     <script src="js/noframework.waypoints.min.js"></script>
     <title>Reading Habits</title>
@@ -88,7 +89,7 @@
             <div class = "book-img"> 
                 <img src="images/just-mercy.jpeg" alt="image description">
             </div>
-            <div class = "book-info" id = "malcolm-x"> 
+            <div class = "book-info" id = "just-mercy"> 
                 <b> Book Title:</b> <br>Just Mercy <br> 
                 <b> Author:</b> <br>Bryan Stevenson</br>
             </div>
@@ -100,6 +101,50 @@
         <div class="scroller" id="step4">
             <p> As I settled into full time work and the <span class="covid-text"> COVID-19 </span> began, somehow I had my most consistent period of reading. During this time I averaged <span class="covid-text"> 3.2 books a month</span> and reached my all time high for books in a year reading 47 books in 2020.</p>
         </div>
+        <div class="scroller" id="step4a">
+            <p> During this period, <span class="nonfiction-text">75%</span> of the books I read were <span class="nonfiction-text">nonfiction</span> which mirrors my overall split for the full time period reviewed. See a few highlights below.</p>
+        </div>
+
+        <div class="scroller book left nonfiction">
+            <div class = "book-img"> 
+                <img src="images/know-my.jpg" alt="image description">
+            </div>
+            <div class = "book-info" id = "know-my"> 
+                <b> Book Title:</b> <br>Know My Name<br> 
+                <b> Author:</b> <br>Chanel Miller</br>
+            </div>
+        </div>
+
+        <div class="scroller book right fiction">
+            <div class = "book-img"> 
+                <img src="images/someone-who.jpg" alt="image description">
+            </div>
+            <div class = "book-info" id = "someone-who"> 
+                <b> Book Title:</b> <br>Someone Who Will Love You in All Your Damaged Glory<br> 
+                <b> Author:</b> <br>Raphael Bob-Waksberg</br>
+            </div>
+        </div>
+
+        <div class="scroller book left nonfiction">
+            <div class = "book-img"> 
+                <img src="images/anthropocene.jpg" alt="image description">
+            </div>
+            <div class = "book-info" id = "anthropocene"> 
+                <b> Book Title:</b> <br>The Anthropocene Reviewed <br> 
+                <b> Author:</b> <br>John Green</br>
+            </div>
+        </div>
+
+        <div class="scroller book right nonfiction">
+            <div class = "book-img"> 
+                <img src="images/power.jpg" alt="image description">
+            </div>
+            <div class = "book-info" id = "power"> 
+                <b> Book Title:</b> <br>Power to the Public: The Promise of Public Interest Technology <br> 
+                <b> Author:</b> <br>Tara Dawson McGuinness and Hana Schank</br>
+            </div>
+        </div>
+
         <div class="scroller" id="step5">
             <p>In October 2021, I started a new job and soon after <span class="moving-text">moved</span> to New York City in the start of 2022. Through all this transitions, my reading took a bit of hit as I averged only <span class="grey-text"> 1.2 books a month </span></p>
         </div>
@@ -112,8 +157,11 @@
         <div class="scroller" id="step8">
             <p>Total Again</p>
         </div>
+        <div class="scroller" id="stepLast">
+        </div>
     </div>
 
     <script src="js/main.js"></script>
 </body>
 </html>
+

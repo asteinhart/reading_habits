@@ -3,10 +3,12 @@
 
 :root {
   --collegeColor: #8B80F9;
-  --covidColor: #BEE3DB;
+  --covidColor: #D1495B;
   --movingColor: #2A7F62;
   --nycColor: #EE964B;
   --gradColor: #F95738;
+  --nonfictionColor: #58A4B0;
+  --fictionColor: #F7C4A5
 }
 
 button,
@@ -89,7 +91,12 @@ h5 {
 }
 
 #step8 {
-  margin-bottom: 1000vh;
+  margin-bottom: 0;
+}
+
+#stepLast {
+  opacity: 0;
+  margin-bottom: 10vh;
 }
 
 .book {
@@ -97,7 +104,6 @@ h5 {
   width: 30%;
   margin-top: 30vh;
   margin-bottom: 20vh;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   z-index: 9999;
   display: flex;
   max-height: 20vh;
@@ -108,6 +114,16 @@ h5 {
 
 .scroller.book.right {
   margin-right: 40px;
+}
+
+.nonfiction {
+  box-shadow: var(--nonfictionColor) 0px 5px 15px;
+  border: 1px var(--nonfictionColor) solid;
+}
+
+.fiction {
+  box-shadow: var(--fictionColor) 0px 5px 15px;
+  border: 1px var(--fictionColor) solid;
 }
 
 .book-info {
@@ -209,6 +225,12 @@ a:hover {
 
 .grey-text {
   background-color: #cfd1d3;
+  font-weight: 600;
+  border-radius: 5px;
+}
+
+.nonfiction-text {
+  background-color: var(--nonfictionColor);
   font-weight: 600;
   border-radius: 5px;
 }

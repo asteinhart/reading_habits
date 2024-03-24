@@ -44,12 +44,14 @@ const summers = [
 ];
 
 const collegeColor = "#8B80F9"
-      covidColor = "#BEE3DB"
+      covidColor = "#D1495B"
       movingColor = "#2A7F62"
       nycColor = "#EE964B"
       gradColor = "#F95738"
       colors = [collegeColor, covidColor, movingColor, nycColor, gradColor];
       labelClasses = [".bar.college",".bar.covid",".bar.moving",".bar.nyc",".bar.grad"];
+      nonfictionColor = "#58A4B0"
+      fictionColor = "#F7C4A5"
 
 
 const division1 = new Date("2019-04-16");
@@ -66,11 +68,17 @@ function assignBarClass(date, divisions) {
     : "bar grad";
 }
 
+function typeColor(type) {
+  return type == 'nonfiction' ? nonfictionColor : fictionColor;
+}
+
 function colorPeriods() {
   var i;
   for (i = 0; i < colors.length; i++) {
     bars = d3.selectAll(labelClasses[i])
+    //bars.transition().duration(500).style("fill", colors[i]);
     bars.style("fill", colors[i]);
+    
 }};
 
 
@@ -80,12 +88,13 @@ function removeAll(color="blue") {
   d3.selectAll(".periods").transition().duration(500).style("opacity", "0");
   // why two lines?
   if (color == "blue") {
-  bars = d3.selectAll(".bar")
-  //bars.transition().duration(500).style("fill", "steelblue");
-  bars.style("fill", "steelblue")
+    bars = d3.selectAll(".bar")
+    bars.transition().duration(500).style("fill", "steelblue");
+  //bars.style("fill", "steelblue")
   } else if (color == "periods") {
     colorPeriods()
   };
+  d3.selectAll("path").style("pointer-events", "none")
 }
 
 // function addBookText() {
@@ -131,6 +140,9 @@ function fullChartStart() {
       .attr("width", chartWidth);
 
   // create a tooltip
+ 
+
+
   var Tooltip = d3
     .select(".chart")
     .append("div")
@@ -146,7 +158,8 @@ function fullChartStart() {
   // Three function that change the tooltip when user hover / move / leave a cell
   var mouseover = function (d) {
     Tooltip.style("opacity", 1);
-    d3.select(this).style("stroke", "black").style("opacity", 1);
+    id = "#bar-" +  String(d.book_id)
+    d3.select(id).style("stroke", "black").style("opacity", 1);
   };
   var mousemove = function (d) {
     Tooltip.html(
@@ -171,12 +184,13 @@ function fullChartStart() {
         d.my_rating +
         "/5"
     )
-      .style("left", d3.mouse(this)[0] + 300 + "px")
+      .style("left", d3.mouse(this)[0] + 100 + "px")
       .style("top", d3.mouse(this)[1] - 500 + "px");
   };
   var mouseleave = function (d) {
     Tooltip.style("opacity", 0);
-    d3.select(this).style("stroke", "none").style("opacity", 1);
+    id = "#bar-" +  String(d.book_id)
+    d3.select(id).style("stroke", "none").style("opacity", 1);
   };
 
   d3.csv("data/gr_js_count.csv", function (error, data) {
@@ -204,6 +218,31 @@ function fullChartStart() {
     x = d3.scaleTime().range([0, chartWidth]).domain([minDate, maxDate]);
     y = d3.scaleLinear().range([height, 0]).domain([0, totalRead]);
 
+    //tooltip 
+    const voronoi = d3.Delaunay
+    .from(
+      data,
+      (d) => ((x(d.date_read)+x(d.date_start))/2),
+      (d) => y(d.rn)
+    ).voronoi(
+      [0,
+      0, 
+      chartWidth, 
+      height]);
+    console.log(voronoi)
+    
+    chart.append("g")
+      .attr("class", "voronoiWrapper")
+      .selectAll("path")
+      .data(data)
+      .enter()
+      .append("path")
+        .attr("opacity", 0.5)
+        // .attr("stroke", "#ff1493") // Show overlay for debugging
+        .attr("fill", "none")
+        .style("pointer-events", "none")
+        .attr("d", (d,i) => voronoi.renderCell(i))
+
     let xAxis = chart
       .append("g")
       .attr("id", "x-axis")
@@ -217,7 +256,7 @@ function fullChartStart() {
     chart.append("text")
           .attr("class", "y-label")
           .attr("text-anchor", "middle")
-          //.attr("transform", "rotate(-90)")
+          .attr("transform", "rotate(-90)")
           .style("writing-mode", "vertical-lr")
           .attr("transform", "rotate(180)")
           .attr("y", -height/2)
@@ -247,11 +286,14 @@ function fullChartStart() {
           return x(d.date_read) - x(d.date_start);
         });
 
+    // so on top of bar is good for tooltip
+    d3.selectAll(".voronoiWrapper").raise()    
+
     chart
-      .selectAll(".bar")
-      .on("mouseover", mouseover)
-      .on("mousemove", mousemove)
-      .on("mouseleave", mouseleave);
+      .selectAll("path")
+        .on("mouseover", mouseover)
+        .on("mousemove", mousemove)
+        .on("mouseleave", mouseleave);
 
     for (const division of divisions) {
       chart
@@ -328,6 +370,7 @@ function fullChartStart() {
           .attr("rx", 6)
           .attr("ry", 6)
           .attr("fill", color)
+          .style("opacity" , "0")
           .lower()
       }
       }
@@ -534,7 +577,7 @@ function summer2016() {
       .attr("width", x(new Date("2016-08-26")) - x(new Date("2016-06-23")))
       .attr("height", height)
       .attr("opacity", "0")
-      .attr("fill", "#DBD8FD")
+      .attr("fill", collegeColor)
       .lower();
 
     d3.select(".shading.summer-16")
@@ -678,7 +721,7 @@ function collegeChart() {
 const barHeight4 = 10;
 barHeight5 = 34;
 barHeight6 = 15;
-barHeight7 = 25;
+barHeight7 = 40;
 
 function main() {
   let offset = "80%";
@@ -731,6 +774,7 @@ function main() {
     element: document.getElementById("step1b"),
     handler: function () {
         removeAll()
+        d3.selectAll("path").style("pointer-events", "all")
     },
     offset: offset,
   });
@@ -738,9 +782,8 @@ function main() {
   // add lines for periods
   new Waypoint({
     element: document.getElementById("step1c"),
-    handler: function (direction) {
-      if (direction == "down") {
-      removeAll()
+    handler: function () {
+      removeAll(color = "periods")
       d3.selectAll(".divisions")
         .transition()
         .duration(1000)
@@ -749,10 +792,7 @@ function main() {
         .transition()
         .duration(1000)
         .style("opacity", "1");
-      colorPeriods();
-    } else {
-      removeAll()
-    }},
+    },
     offset: offset,
   });
 
@@ -783,7 +823,7 @@ function main() {
           .transition().duration(500)
           .style("fill", collegeColor)
     },
-    offset: offset,
+    offset: "60%",
   });
 
   // move to all of college and color summers
@@ -818,6 +858,25 @@ function main() {
         collegeChart();
       }
     },
+    offset: offset,
+  });
+
+  // type coloring
+  new Waypoint({
+    element: document.getElementById("step4a"),
+    handler: function () {
+        d3.selectAll(".bar").transition().duration(500).style('fill', d => typeColor(d.type))
+      },
+    offset: offset,
+  });
+
+  // type coloring
+  new Waypoint({
+    element: document.getElementById("step4a"),
+    handler: function () {
+      // do nothing with these for now
+      //d3.selectAll("#bar-41949311, #bar-55145261, #bar-55421550")
+      },
     offset: offset,
   });
 
@@ -895,6 +954,14 @@ function main() {
         endDate = new Date("2024-01-26");
         panChart(startDate, endDate, barHeight7);
       }
+    },
+    offset: offset,
+  });
+
+  new Waypoint({
+    element: document.getElementById("stepLast"),
+    handler: function () {
+      d3.selectAll("path").style("pointer-events", "all")
     },
     offset: offset,
   });
