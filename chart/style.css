@@ -17,6 +17,19 @@ body {
   width: 720px;
   padding: 1em;
   margin: 0 auto;
+  background: #f9f9f9;
+}
+
+.title {
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  margin-top: 15px;
+}
+
+.byline {
+  margin-top: 10px;
 }
 
 .body-text {
@@ -25,9 +38,14 @@ body {
   margin-bottom: 0;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
 .tooltip {
   font-size: 12px;
-  width: 30%;
+  width: 20%;
   margin-left: 30px;
 }
 
@@ -102,8 +120,8 @@ h5 {
 .book {
   /* margin-left: 100px; */
   width: 30%;
-  margin-top: 30vh;
-  margin-bottom: 20vh;
+  margin-top: 15vh;
+  margin-bottom: 15vh;
   z-index: 9999;
   display: flex;
   max-height: 20vh;
@@ -127,13 +145,13 @@ h5 {
 }
 
 .book-info {
-  justify-content: center;
-  align-content: center;
+  margin: auto;
   font-size: 14px;
   -ms-flex: 0 0 66.67%;
   flex: 0 0 66.67%;
   max-width: 66.67%;
-  padding: 0 5px 0 5px;
+  padding: 0 10px 0 10px;
+  max-height: 100%;
 ;}
 
 img {
@@ -144,6 +162,7 @@ img {
 
 .book-img {
   display: block;
+  margin: auto;
   -ms-flex: 0 0 33.333333%;
   flex: 0 0 33.333333%;
   max-width: 33.333333%;
@@ -163,12 +182,10 @@ button {
   margin-left: 0px;
   padding-left: 0px;
   outline: none;
-  background-color: white;
 }
 
 .content {
   padding: 0 18px;
-  background-color: white;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
@@ -203,12 +220,14 @@ a:hover {
   background-color: var(--covidColor);
   font-weight: 600;
   border-radius: 5px;
+  color: white;
 }
 
 .moving-text {
   background-color: var(--movingColor);
-  font-weight: 600;
+  font-weight: 550;
   border-radius: 5px;
+  color: white;
 }
 
 .nyc-text {
@@ -221,6 +240,7 @@ a:hover {
   background-color: var(--gradColor);
   font-weight: 600;
   border-radius: 5px;
+  color: white
 }
 
 .grey-text {
@@ -235,10 +255,12 @@ a:hover {
   border-radius: 5px;
 }
 
-
 .periods.text {
   font-weight: 600;
   z-index: 9999;
+}
+.goodreads {
+  text-decoration: underline;
 }
 
 span { 

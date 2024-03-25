@@ -161,6 +161,16 @@ function fullChartStart() {
     id = "#bar-" +  String(d.book_id)
     d3.select(id).style("stroke", "black").style("opacity", 1);
   };
+
+  function tooltipSide(mouse) {
+    if (mouse + 800 > window.innerWidth) {
+      tooltipEdit = -200
+    } else {
+      tooltipEdit = 50
+    }
+    return mouse + tooltipEdit
+    };
+
   var mousemove = function (d) {
     Tooltip.html(
       "<b> Book Title:</b> " +
@@ -178,15 +188,15 @@ function fullChartStart() {
         d.end_tooltip +
         "</br>" +
         "<b> Reading Duration:</b> " +
-        d.duration_days +
+        d.duration_days + " days" + 
         "</br>" +
         "<b> Rating:</b> " +
         d.my_rating +
         "/5"
     )
-      .style("left", d3.mouse(this)[0] + 100 + "px")
+      .style("left", tooltipSide(d3.mouse(this)[0])+ "px")
       .style("top", d3.mouse(this)[1] - 500 + "px");
-  };
+    };
   var mouseleave = function (d) {
     Tooltip.style("opacity", 0);
     id = "#bar-" +  String(d.book_id)
@@ -684,14 +694,14 @@ function collegeChart() {
       .attr("width", x(new Date("2019-06-01")) - x(new Date("2017-09-18")))
       .attr("height", height)
       .attr("opacity", 0)
-      .attr("fill", "#cfd1d3")
+      .attr("fill", "#e1e2e3")
       .lower();
 
     d3.selectAll(".shading.college")
       .transition()
       .delay(500)
       .duration(1000)
-      .attr("opacity", 0.2);
+      .attr("opacity", 0.5);
 
     // Update chart
     var bars = chart.selectAll(".bar").data(data);
@@ -948,6 +958,8 @@ function main() {
       if (direction == "down") {
         // 8 total
         fullChartRefresh();
+        removeAll(color="periods");
+        d3.selectAll("path").style("pointer-events", "all")
       } else {
         // 7 start grad school
         startDate = new Date("2023-09-01");
@@ -961,6 +973,7 @@ function main() {
   new Waypoint({
     element: document.getElementById("stepLast"),
     handler: function () {
+      removeAll(color="periods");
       d3.selectAll("path").style("pointer-events", "all")
     },
     offset: offset,
