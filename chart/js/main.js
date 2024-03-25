@@ -86,6 +86,7 @@ function removeAll(color="blue") {
   d3.selectAll(".divisions").transition().style("opacity", "0");
   d3.selectAll(".shading").transition().duration(500).style("opacity", "0");
   d3.selectAll(".periods").transition().duration(500).style("opacity", "0");
+  d3.selectAll(".bar").attr("opacity","1");
   // why two lines?
   if (color == "blue") {
     bars = d3.selectAll(".bar")
@@ -622,9 +623,9 @@ function collegeChart() {
 
   d3.csv("data/gr_js_count.csv", function (error, data) {
     var parseDate = d3.timeParse("%Y-%m-%d");
-    endDate = new Date("2019-06-01");
+    endDate = division1;
     fil = data.filter(function (d) {
-      return parseDate(d.date_start) <= endDate;
+      return parseDate(d.date_read) <= endDate;
     });
 
     data.forEach(function (d) {
@@ -860,11 +861,13 @@ function main() {
       if (direction == "down") {
         // 4 Post College / COVID
         removeAll(color="periods");
-        startDate = new Date("2019-07-01");
+        startDate = new Date("2019-04-15");
         endDate = new Date("2021-08-14");
         panChart(startDate, endDate, barHeight4);
+        d3.selectAll("#bar-152504, #bar-28186015, #bar-13588394").attr("opacity", "0");
       } else {
         //  3 college years
+        removeAll(color="periods");
         collegeChart();
       }
     },
@@ -900,6 +903,7 @@ function main() {
         startDate = new Date("2021-08-14");
         endDate = new Date("2022-04-01");
         panChart(startDate, endDate, barHeight5);
+        d3.select("#bar-9791").attr("opacity", "0")
       } else {
         // 4 Post College / COVID
         startDate = new Date("2019-07-01");
@@ -920,6 +924,7 @@ function main() {
         startDate = new Date("2022-04-01");
         endDate = new Date("2023-09-01");
         panChart(startDate, endDate, barHeight6, (nyc = true));
+        d3.select("#bar-17607").attr("opacity","0")
       } else {
         // 5 Move to NYC
         removeAll();
@@ -941,6 +946,7 @@ function main() {
         startDate = new Date("2023-09-01");
         endDate = new Date("2024-01-26");
         panChart(startDate, endDate, barHeight7);
+        d3.select("#bar-41057294").attr("opacity","0")
       } else {
         // 6 NYC
         startDate = new Date("2022-03-07");
@@ -965,16 +971,8 @@ function main() {
         startDate = new Date("2023-09-01");
         endDate = new Date("2024-01-26");
         panChart(startDate, endDate, barHeight7);
+        d3.selectAll("path").style("pointer-events", "none")
       }
-    },
-    offset: offset,
-  });
-
-  new Waypoint({
-    element: document.getElementById("stepLast"),
-    handler: function () {
-      removeAll(color="periods");
-      d3.selectAll("path").style("pointer-events", "all")
     },
     offset: offset,
   });
