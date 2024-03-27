@@ -1,3 +1,7 @@
+window.onbeforeunload = function () {
+  window.scrollTo(0, 0);
+};
+
 // ----------------------------------------------------------------------------
 // DROPDOWN BUTTON
 
@@ -8,14 +12,15 @@ for (i = 0; i < coll.length; i++) {
   coll[i].addEventListener("click", function () {
     //this.classList.toggle("active");
     // idk why unicode doenst work here
-    if (this.innerHTML.indexOf("▼") !== -1) {
+    if (this.innerHTML.indexOf("▾") !== -1) {
       this.innerHTML =
-        "&#9654 Some comments about the data for those interested.";
+        "&#9656; Click here for some additional comments about the data if interested.";
     } else {
       this.innerHTML =
-        "&#x25BC Some comments about the data for those interested.";
+        "&#9662 Click here for some additional comments about the data if interested.";
     }
-    var content = this.nextElementSibling;
+    var content = document.getElementById("content");
+    console.log(content);
     if (content.style.maxHeight) {
       content.style.maxHeight = null;
     } else {
@@ -26,7 +31,6 @@ for (i = 0; i < coll.length; i++) {
 
 // ----------------------------------------------------------------------------
 // CONSTANTS
-
 
 const margin = { top: 30, right: 30, bottom: 30, left: 50 },
   chartWidth = 900;

@@ -2,22 +2,30 @@
 @import url(https://fonts.googleapis.com/css?family=Merriweather:400,400i,700,700i);
 
 :root {
-  --collegeColor: #8B80F9;
-  --covidColor: #D1495B;
-  --movingColor: #2A7F62;
-  --nycColor: #EE964B;
-  --gradColor: #F95738;
-  --nonfictionColor: #58A4B0;
-  --fictionColor: #F7C4A5
+  --collegeColor: #8b80f9;
+  --covidColor: #d1495b;
+  --movingColor: #2a7f62;
+  --nycColor: #ee964b;
+  --gradColor: #f95738;
+  --nonfictionColor: #58a4b0;
+  --fictionColor: #f7c4a5;
 }
 
-button,
 body {
   font-family: "Public Sans", Helvetica, sans-serif;
   width: 720px;
   padding: 1em;
   margin: 0 auto;
   background: #f9f9f9;
+}
+
+button {
+  font-family: "Public Sans", Helvetica, sans-serif;
+  padding: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  background: #f9f9f9;
+  display: inline;
 }
 
 .title {
@@ -45,7 +53,7 @@ a {
 
 .tooltip {
   font-size: 12px;
-  width: 20%;
+  width: 21%;
   margin-left: 30px;
 }
 
@@ -92,7 +100,6 @@ h5 {
   background-color: white;
   border: 1px black solid;
   padding: 10px 20px;
-  /* margin-left: 100px; */
   width: 50%;
   margin-top: 90vh;
   margin-bottom: 20vh;
@@ -118,7 +125,6 @@ h5 {
 }
 
 .book {
-  /* margin-left: 100px; */
   width: 30%;
   margin-top: 15vh;
   margin-bottom: 15vh;
@@ -152,13 +158,12 @@ h5 {
   max-width: 66.67%;
   padding: 0 10px 0 10px;
   max-height: 100%;
-;}
+}
 
 img {
   width: 100%;
   max-height: 100%;
 }
-
 
 .book-img {
   display: block;
@@ -177,23 +182,15 @@ button {
 .collapsible {
   color: black;
   cursor: pointer;
-  border: none;
-  text-align: left;
-  margin-left: 0px;
-  padding-left: 0px;
-  outline: none;
+  display: inline;
 }
 
 .content {
-  padding: 0 18px;
+  padding: 0;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
 }
-
-/* .collapsible:hover {
-  text-decoration: underline;
-} */
 
 .link {
   color: black;
@@ -240,7 +237,7 @@ a:hover {
   background-color: var(--gradColor);
   font-weight: 600;
   border-radius: 5px;
-  color: white
+  color: white;
 }
 
 .grey-text {
@@ -254,6 +251,11 @@ a:hover {
   font-weight: 600;
   border-radius: 5px;
 }
+.fiction-text {
+  background-color: var(--fictionColor);
+  font-weight: 600;
+  border-radius: 5px;
+}
 
 .periods.text {
   font-weight: 600;
@@ -263,7 +265,7 @@ a:hover {
   text-decoration: underline;
 }
 
-span { 
-  padding-left: 3px; 
-  padding-right: 3px; 
-} 
+span {
+  padding-left: 3px;
+  padding-right: 3px;
+}

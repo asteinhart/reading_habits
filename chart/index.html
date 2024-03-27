@@ -1,191 +1,298 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="http://d3js.org/d3.v4.min.js"></script>
     <script src="https://d3js.org/d3-delaunay.v6.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="style.css" /> 
     <script src="js/noframework.waypoints.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css" />
     <title>My Reading Over the Years</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="title-container">
-        <div class="title-info">
-            <h1 class = "title">My Reading Over the Years</h1>
-            <h4 class = "subtitle">Follow my reading journey from February 2016 to January 2024.</h4>
-            <p class="byline">By <a href="https://asteinhart.github.io/" class="link"
-                >Austin Steinhart</a> | Spring 2024</p>
-        </div>
-        <hr>
+      <div class="title-info">
+        <h1 class="title">My Reading Over the Years</h1>
+        <h4 class="subtitle">
+          Follow my reading journey from February 2016 to January 2024.
+        </h4>
+        <p class="byline">
+          By
+          <a href="https://asteinhart.github.io/" class="link"
+            >Austin Steinhart</a
+          >
+          | April 2024
+        </p>
+      </div>
+      <hr />
     </div>
-    <div class = "body-text" id = "intro">
-        <p> As a child I was a voracious reader, if only to rack up Accelerated Reader points (<a target = "_blank" href = "https://www.tiktok.com/discover/how-to-get-a-lot-of-accelerated-reader-points">iynyk</a>). However, my reading plummeted in high school. 
-            In 10th grade, I watched more movies in class than books I read and in my 12th-grade literature class, I managed to read only two of the required ten-plus books 
-            I was assigned.</p>
-        <p> College brought back my love for reading in due to my two closest friends were English majors and wouldn't shut up about it. Their passion for books must have reinvigorated my love for reading as the first 
-            summer after college, i dove back into reading by setting an ambitious goal of reading a book a week over the summer (which i accomplished!). After this impassioned reentry into 
-            reading, I have considered myself a generally consistent reader. </p>
-        <p> I by no means consider myself someone who reads a crazy amount of books but I do consider myself someone who will 
-            jump on any chance to collect copious amounts of personal data about myself. </p>
-            <p> Scroll along below as I explore the reading over the last eight years.</p>
-        <button type="button" class="collapsible">&#9654; Some comments about the data for those interested. </button>
-        <div class="content">
-                <p>I have tracked the date I finished every book I have read since 2016 on Goodreads (yes I know I should switch to <a target = "_blank" href = "https://www.thestorygraph.com/"
-                >StoryGraph</a>). I did not track the start date but since 
-                    I rarely read more than one book at a time, I imputed a start date for every book using the completion date of the last book I had read. This methodology has the affect of exaggerating my average 
-                    reading rate. For example, it may appear it took me 30 days to read a book but in actuality, it took me a week but I did not start the book until three weeks after I 
-                    had finished the most recent book. While not a perfect representation of my reading over the last few years, it should work relatively well.</p>
-        </div>
+    <div class="body-text" id="intro">
+      <p>
+        As a child I was a voracious reader (if only to rack up Accelerated
+        Reader points,
+        <a
+          target="_blank"
+          href="https://www.tiktok.com/discover/how-to-get-a-lot-of-accelerated-reader-points"
+          >iynyk</a
+        >). However, as the story often goes, my reading plummeted in high
+        school. In my 10th grade English class, I watched more movies than read
+        books and in my 12th-grade Literature class, I managed to read only two
+        of the required ten-plus books we were assigned.
+      </p>
+      <p>
+        Thankfully, college brought back my love for reading, in part due to two
+        close who were English majors. Their passion for books reinvigorated my
+        love for reading and the summer after my first year of college, I dove
+        back in by reading a book a week over the summer. After this impassioned
+        reentry into reading, I consider myself a generally consistent reader,
+        even going as far as declaring reading a hobby of mine when meeting new
+        people.
+      </p>
+      <p>
+        With that being said, I by no means consider myself a particularly quick
+        or prolific reader but I do consider myself someone who collects a
+        copious amounts of personal data about myself. To that end, I have
+        logged every book I have read since 2016 on Goodreads (yes I know I
+        should switch to
+        <a
+          style="display: inline"
+          target="_blank"
+          href="https://www.thestorygraph.com/"
+          >StoryGraph</a
+        >) along with a star rating, a finish date and an occasional review.
+        <span class="collapsible">
+          &#9656; Click here for some additional comments about the data if
+          interested.
+        </span>
+      </p>
+
+      <div class="content" id="content">
+        <p>
+          I have tracked the date I finished every book I have read since 2016
+          on Goodreads. I did not track the start date but since I rarely read
+          more than one book at a time, I imputed a start date for every book
+          using the completion date of the last book I had read. This
+          methodology has the affect of exaggerating my average reading rate.
+          For example, it may appear it took me 30 days to read a book but in
+          actuality, it took me a week but I did not start the book until three
+          weeks after I had finished the most recent book. While not a perfect
+          representation of my reading over the last few years, it should work
+          relatively well.
+        </p>
+      </div>
+      <p>
+        Scroll along below as I explore the reading over the last eight years.
+      </p>
     </div>
     <div class="entry">
-        <div class="chartContainer" id = 'intro-chart'>
-            <div class="chart"></div>
+      <div class="chartContainer" id="intro-chart">
+        <div class="chart"></div>
+      </div>
+      <div class="scroller" id="step1">
+        <p>
+          This chart shows every book I have read from
+          <b>February 2016 to January 2024</b>. Each blue bar represents one
+          book. The length of the bar signifies how long I spent reading the
+          book and the bars move up vertically to signify the total number of
+          books I have read since February 2016.
+        </p>
+      </div>
+      <div class="scroller" id="step1a">
+        <p>
+          For example, here are two books, <b>Beloved</b> and
+          <b>User Friendly</b>.
+        </p>
+      </div>
+      <div class="scroller book left">
+        <div class="book-img">
+          <img src="images/beloved.jpg" alt="image description" />
         </div>
-        <div class="scroller" id="step1">
-            <p>This chart shows every book I have read from February 2016 to January 2024. Each blue bar represents one book. The length of the bar signifies how long I spent reading the book and the bars move 
-                up vertically to signify the total number of books I have read since February 2016.</p>
+        <div class="book-info" id="beloved">
+          <b> Book Title:</b> <br />Beloved <br />
+          <b> Author:</b> <br />Toni Morrison<br />
         </div>
-        <div class="scroller" id="step1a">
-            <p>For example, here are two books, <b>Beloved</b> and <b>User Friendly</b>.</p>
+      </div>
+      <div class="scroller book right">
+        <div class="book-img">
+          <img src="images/user-friendly.jpg" alt="image description" />
         </div>
-        <div class="scroller book left">
-            <div class = "book-img"> 
-                <img src="images/beloved.jpg" alt="image description">
-            </div>
-            <div class = "book-info" id = "beloved"> 
-                <b> Book Title:</b> <br>Beloved <br> 
-                <b> Author:</b> <br>Toni Morrison<br>
-            </div>
+        <div class="book-info" id="user-friendly">
+          <b> Book Title:</b> <br />User Friendly <br />
+          <b> Author:</b> <br />Cliff Kuang and Robert Fabricant<br />
         </div>
-        <div class="scroller book right">
-            <div class = "book-img"> 
-                <img src="images/user-friendly.jpg" alt="image description">
-            </div>
-            <div class = "book-info" id = "user-friendly"> 
-                <b> Book Title:</b> <br>User Friendly <br> 
-                <b> Author:</b> <br>Cliff Kuang and Robert Fabricant<br>
-            </div>
-        </div>
+      </div>
 
-        <div class="scroller" id="step1b">
-            <p>Feel free to pause for a moment and hover over each bar to see which book it represents.</p>
-        </div>
+      <div class="scroller" id="step1b">
+        <p>
+          Feel free to pause for a moment and hover over each bar to see which
+          book it represents.
+        </p>
+      </div>
 
-        <div class="scroller" id="step1c">
-            <p>We will be zooming into five different time periods to further explore my reading over the years.</p>
+      <div class="scroller" id="step1c">
+        <p>
+          Let's zoom into five different time periods to further explore my
+          reading over the years.
+        </p>
+      </div>
+      <div class="scroller" id="step2">
+        <p>
+          In the <span class="college-text">summer of 2016</span>, I challenged
+          myself to read a book a week in an attempt to revive my reading which
+          was for the most part a successful! Exploring a possible career in law
+          and working in my hometown prompted me to pickup titles related to
+          race and socioeconomic factors. Almost all the books I read were
+          nonfiction, a trend we will see persist.
+        </p>
+      </div>
+      <div class="scroller book left">
+        <div class="book-img">
+          <img src="images/malcolm-x.jpg" alt="image description" />
         </div>
-        <div class="scroller" id="step2">
-            <p>In the <span class="college-text">summer of 2016</span>, I challenged myself to read a book a week in an attempt to revive my reading which was for the most part a successful! Exploring a possible career in law and working in my hometown 
-                prompted me to pickup titles related to race and socioeconomic factors. Almost all the books I read were nonfiction, a trend we will see persist.</p>
+        <div class="book-info" id="malcolm-x">
+          <b> Book Title:</b> <br />The Autobiography of Malcolm X <br />
+          <b> Author:</b> <br />Malcolm X<br />
         </div>
-        <div class="scroller book left">
-            <div class = "book-img"> 
-                <img src="images/malcolm-x.jpg" alt="image description">
-            </div>
-            <div class = "book-info" id = "malcolm-x"> 
-                <b> Book Title:</b> <br>The Autobiography of Malcolm X <br> 
-                <b> Author:</b> <br>Malcolm X<br>
-            </div>
-        </div>
+      </div>
 
-        <div class="scroller book right">
-            <div class = "book-img"> 
-                <img src="images/just-mercy.jpeg" alt="image description">
-            </div>
-            <div class = "book-info" id = "just-mercy"> 
-                <b> Book Title:</b> <br>Just Mercy <br> 
-                <b> Author:</b> <br>Bryan Stevenson<br>
-            </div>
+      <div class="scroller book right">
+        <div class="book-img">
+          <img src="images/just-mercy.jpeg" alt="image description" />
         </div>
+        <div class="book-info" id="just-mercy">
+          <b> Book Title:</b> <br />Just Mercy <br />
+          <b> Author:</b> <br />Bryan Stevenson<br />
+        </div>
+      </div>
 
-        <div class="scroller" id="step3">
-            <p>After this jump-start, I had a hot streak in which I read <span class="college-text"> 1.8 books a month</span> in the first half of college with most of the 
-                reading happening during breaks. During the second half, my reading pace declined and I only <span class="grey-text">0.4 books a month</span>. 
-                It must have been the dread of the unknown ahead slowing me down.</p>
-        </div>
-        <div class="scroller" id="step4">
-            <p> As I settled into full time work and the <span class="covid-text"> COVID-19 pandemic</span> began,  I miraculously had 
-                my most consistent period of reading. During this time, I read <span class="covid-text"> 3.2 books a month</span> 
-                and read 47 books in 2020, the most in year to date.</p>
-        </div>
-        <div class="scroller" id="step4a">
-            <p> During this period, <span class="nonfiction-text">75%</span> of the books I read were <span class="nonfiction-text">nonfiction</span> 
-                which matches the overall split between fiction and nonfiction for 2016 to 2024. <br> <br> Continuing scrolling to see a few highlights from this period.</p>
-        </div>
+      <div class="scroller" id="step3">
+        <p>
+          After this jump-start, I had a hot streak in which I read
+          <span class="college-text"> 1.8 books a month</span> in the first half
+          of college. During the second half, my reading pace declined as I only
+          read <span class="grey-text">0.4 books a month</span>. It must have
+          been the dread of the unknown ahead slowing me down.
+        </p>
+      </div>
+      <div class="scroller" id="step4">
+        <p>
+          As I settled into full time work and the
+          <span class="covid-text"> COVID-19 pandemic</span> began, I
+          miraculously had my most consistent period reading
+          <span class="covid-text"> 3.2 books a month</span>. I also read 47
+          books in 2020, my all time one year record.
+        </p>
+      </div>
+      <div class="scroller" id="step4a">
+        <p>
+          During this period, <span class="nonfiction-text">75%</span> of the
+          books I read were nonfiction which matches my overall split between
+          <span class="nonfiction-text">nonfiction</span> and
+          <span class="fiction-text">fiction</span> for 2016 to 2024. Continuing
+          scrolling to see a few highlights from this period.
+        </p>
+      </div>
 
-        <div class="scroller book left nonfiction">
-            <div class = "book-img"> 
-                <img src="images/know-my.jpg" alt="image description">
-            </div>
-            <div class = "book-info" id = "know-my"> 
-                <b> Book Title:</b> <br>Know My Name<br> 
-                <b> Author:</b> <br>Chanel Miller<br>
-            </div>
+      <div class="scroller book left nonfiction">
+        <div class="book-img">
+          <img src="images/know-my.jpg" alt="image description" />
         </div>
+        <div class="book-info" id="know-my">
+          <b> Book Title:</b> <br />Know My Name<br />
+          <b> Author:</b> <br />Chanel Miller<br />
+        </div>
+      </div>
 
-        <div class="scroller book right fiction">
-            <div class = "book-img"> 
-                <img src="images/someone-who.jpg" alt="image description">
-            </div>
-            <div class = "book-info" id = "someone-who"> 
-                <b> Book Title:</b> <br>Someone Who Will Love You in All Your Damaged Glory<br> 
-                <b> Author:</b> <br>Raphael Bob-Waksberg<br>
-            </div>
+      <div class="scroller book right fiction">
+        <div class="book-img">
+          <img src="images/someone-who.jpg" alt="image description" />
         </div>
+        <div class="book-info" id="someone-who">
+          <b> Book Title:</b> <br />Someone Who Will Love You in All Your
+          Damaged Glory<br />
+          <b> Author:</b> <br />Raphael Bob-Waksberg<br />
+        </div>
+      </div>
 
-        <div class="scroller book left nonfiction">
-            <div class = "book-img"> 
-                <img src="images/anthropocene.jpg" alt="image description">
-            </div>
-            <div class = "book-info" id = "anthropocene"> 
-                <b> Book Title:</b> <br>The Anthropocene Reviewed <br> 
-                <b> Author:</b> <br>John Green<br>
-            </div>
+      <div class="scroller book left nonfiction">
+        <div class="book-img">
+          <img src="images/anthropocene.jpg" alt="image description" />
         </div>
+        <div class="book-info" id="anthropocene">
+          <b> Book Title:</b> <br />The Anthropocene Reviewed <br />
+          <b> Author:</b> <br />John Green<br />
+        </div>
+      </div>
 
-        <div class="scroller book right nonfiction">
-            <div class = "book-img"> 
-                <img src="images/power.jpg" alt="image description">
-            </div>
-            <div class = "book-info" id = "power"> 
-                <b> Book Title:</b> <br>Power to the Public: The Promise of Public Interest Technology <br> 
-                <b> Author:</b> <br>Tara Dawson McGuinness and Hana Schank<br>
-            </div>
+      <div class="scroller book right nonfiction">
+        <div class="book-img">
+          <img src="images/power.jpg" alt="image description" />
         </div>
+        <div class="book-info" id="power">
+          <b> Book Title:</b> <br />Power to the Public: The Promise of Public
+          Interest Technology <br />
+          <b> Author:</b> <br />Tara Dawson McGuinness and Hana Schank<br />
+        </div>
+      </div>
 
-        <div class="scroller" id="step5">
-            <p>In October 2021, I started a new job and soon after <span class="moving-text">moved</span> to New York City in the start of 2022. 
-                Through all this transitions, my reading took a bit of hit as I read only 1.2 books a month.</p>
-        </div>
-        <div class="scroller" id="step6">
-            <p>Outside of a <span class="grey-text">small slowdown</span> in the fall of 2022 in which was I applying to graduate school, my reading picked back up in 2022 and 2023 as 
-                I read <span class="nyc-text">1.9 books a month</span>.</p>
-        </div>
-        <div class="scroller" id="step6a">
-            <p>One notable development in this period is that I got my first ebook in July of 2023. I rode the high horse as a physical-book-type-person 
-                but when I found out an ebook fits in my Uniqlo crossbody bag and that, it was hard to argue with the convenience.</p>
-        </div>
-        <div class="scroller" id="step7">
-            <p>As I allude to, in the fall of 2023 I began <span class="grad-text">graduate school</span> and generally was able to keep a decent pace, 
-                reading <span class="grad-text">1.7 books a month</span>. However, I almost certainly will not be able to maintain this pace for much longer.</p>
-        </div>
-        <div class="scroller" id="step8">
-            <p>And that brings us to the end of our journey. Thank you for following along as I explore my reading over the last few years. Feel free to 
-                continue to explore the books by hovering over each bar.</p>
-        </div>
-        <div class="scroller" id="step8a">
-
-            <p>Last but not least, if you have a book to recommend or want to follow along with my reading in real time, 
-                add me on <a target = "_blank" class = "goodreads" href = "https://www.goodreads.com/user/show/55458490-austin-steinhart">Goodreads</a>!</p>
-        </div>
-        <div class="scroller" id="stepLast">
-        </div>
+      <div class="scroller" id="step5">
+        <p>
+          In October 2021, I started a new job and soon after
+          <span class="moving-text">moved</span> to New York City in the start
+          of 2022. Through all these transitions, my reading took a bit of hit
+          and I read only 1.2 books a month during this period.
+        </p>
+      </div>
+      <div class="scroller" id="step6">
+        <p>
+          Outside of a <span class="grey-text">small slowdown</span> in the fall
+          of 2022 in which was I applying to graduate school, my reading picked
+          back up in 2022 and 2023 as I read
+          <span class="nyc-text">1.9 books a month</span>.
+        </p>
+      </div>
+      <div class="scroller" id="step6a">
+        <p>
+          One notable development in this period is that I got my first ebook in
+          July of 2023. I rode the high horse as a physical-book-type-person but
+          when I found out an ebook fits in my Uniqlo crossbody bag and that the
+          battery lasts for weeks at a time, it was hard to argue with the
+          convenience.
+        </p>
+      </div>
+      <div class="scroller" id="step7">
+        <p>
+          As I alluded to, in the fall of 2023 I began
+          <span class="grad-text">graduate school</span> and generally was able
+          to keep a decent pace, reading 1.7 books a month over the first few
+          months. However, I almost certainly will not be able to maintain this
+          pace for much longer.
+        </p>
+      </div>
+      <div class="scroller" id="step8">
+        <p>
+          That brings us to the end of our journey. Thank you for following
+          along as I explore my reading over the last few years. Feel free to
+          continue to explore the books by hovering over each bar.
+        </p>
+      </div>
+      <div class="scroller" id="step8a">
+        <p>
+          Last but not least, if you have a book to recommend or want to follow
+          along with my reading in real time, add me on
+          <a
+            target="_blank"
+            class="goodreads"
+            href="https://www.goodreads.com/user/show/55458490-austin-steinhart"
+            >Goodreads</a
+          >! Happy Reading!
+        </p>
+      </div>
+      <div class="scroller" id="stepLast"></div>
     </div>
-    <hr>
-    <p>Special thanks to Oliver Gladfelter for support with this project. </p>
+    <hr />
+    <p>Special thanks to Oliver Gladfelter for support with this project.</p>
 
     <script src="js/main.js"></script>
-</body>
+  </body>
 </html>
-
