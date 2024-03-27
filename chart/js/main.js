@@ -1,10 +1,9 @@
+// force to top on reload
 window.onbeforeunload = function () {
   window.scrollTo(0, 0);
 };
 
-// ----------------------------------------------------------------------------
-// DROPDOWN BUTTON
-
+// DROPDOWN BUTTON-------------------------------------------------------------
 var coll = document.getElementsByClassName("collapsible");
 var i;
 
@@ -20,7 +19,6 @@ for (i = 0; i < coll.length; i++) {
         "&#9662 Click here for some additional comments about the data if interested.";
     }
     var content = document.getElementById("content");
-    console.log(content);
     if (content.style.maxHeight) {
       content.style.maxHeight = null;
     } else {
@@ -29,8 +27,7 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 
-// ----------------------------------------------------------------------------
-// CONSTANTS
+// CONSTANTS-------------------------------------------------------------------
 
 const margin = { top: 30, right: 30, bottom: 30, left: 50 },
   chartWidth = 900;
@@ -40,7 +37,6 @@ padding = 0.3;
 
 // colors
 let defaultColor = "steelblue";
-const colorScale = d3.scaleLinear().domain([0, 500]).range(["red", "green"]);
 
 const summers = [
   {
@@ -80,8 +76,7 @@ barHeight5 = 34;
 barHeight6 = 15;
 barHeight7 = 40;
 
-// ----------------------------------------------------------------------------
-// HELPER FUNCTIONS
+// HELPER FUNCTIONS------------------------------------------------------------
 
 function assignBarClass(date, divisions) {
   return date < divisions[0]
@@ -125,8 +120,7 @@ function removeAll(color = "blue") {
   d3.selectAll("path").style("pointer-events", "none");
 }
 
-// ----------------------------------------------------------------------------
-// CHART FUNCTIONS
+// CHART FUNCTIONS-------------------------------------------------------------
 
 // starting chart
 function fullChartStart() {
@@ -696,8 +690,7 @@ function collegeChart() {
   });
 }
 
-// ----------------------------------------------------------------------------
-// WAYPOINTS
+// WAYPOINTS-------------------------------------------------------------------
 
 function waypoints() {
   let offset = "80%";
@@ -944,11 +937,9 @@ function waypoints() {
   });
 }
 
-// ----------------------------------------------------------------------------
-// MAIN
+// MAIN------------------------------------------------------------------------
 
 function main() {
-  console.log("main");
   fullChartStart();
   waypoints();
 }
