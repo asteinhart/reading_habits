@@ -1,6 +1,7 @@
 // force to top on reload
 window.onbeforeunload = function () {
   window.scrollTo(0, 0);
+  fullChartStart();
 };
 
 // DROPDOWN BUTTON-------------------------------------------------------------
@@ -29,15 +30,19 @@ for (i = 0; i < coll.length; i++) {
 
 // CONSTANTS-------------------------------------------------------------------
 
-const margin = { top: 30, right: 30, bottom: 30, left: 50 },
-  chartWidth = 900;
-width = 720 - margin.left - margin.right;
-height = 500 - margin.top - margin.bottom;
-padding = 0.3;
+const is_mobile = window.innerWidth < 600;
+const margin = { top: 30, right: 30, bottom: 30, left: 50 };
+const entry = document.getElementById("entry");
+const chartWidth = entry.getBoundingClientRect().width;
+let height;
 
-// colors
-let defaultColor = "steelblue";
+if (is_mobile) {
+  height = window.innerHeight * 0.5;
+} else {
+  height = window.innerHeight * 0.66 - margin.top - margin.bottom;
+}
 
+const padding = 0.3;
 const summers = [
   {
     start: "2016-06-01",
@@ -49,34 +54,40 @@ const summers = [
   },
 ];
 
-const collegeColor = "#8B80F9";
-covidColor = "#D1495B";
-movingColor = "#2A7F62";
-nycColor = "#EE964B";
-gradColor = "#F95738";
-colors = [collegeColor, covidColor, movingColor, nycColor, gradColor];
-labelClasses = [
+const defaultColor = "steelblue",
+  collegeColor = "#8B80F9",
+  covidColor = "#D1495B",
+  movingColor = defaultColor,
+  nycColor = "#2A7F62",
+  gradColor = "#EE964B",
+  colors = [collegeColor, covidColor, movingColor, nycColor, gradColor];
+
+const labelClasses = [
   ".bar.college",
   ".bar.covid",
   ".bar.moving",
   ".bar.nyc",
   ".bar.grad",
 ];
-nonfictionColor = "#58A4B0";
-fictionColor = "#F7C4A5";
 
-const division1 = new Date("2019-04-16");
-division2 = new Date("2021-08-14");
-division3 = new Date("2022-04-01");
-division4 = new Date("2023-09-01");
-divisions = [division1, division2, division3, division4];
+const division1 = new Date("2019-04-16"),
+  division2 = new Date("2021-08-14"),
+  division3 = new Date("2022-04-01"),
+  division4 = new Date("2023-09-01"),
+  divisions = [division1, division2, division3, division4];
 
-const barHeight4 = 10;
-barHeight5 = 34;
-barHeight6 = 15;
-barHeight7 = 40;
+const barHeight = 10,
+  barHeight4 = 10,
+  barHeight5 = 34,
+  barHeight6 = 15,
+  barHeight7 = 40;
 
 // HELPER FUNCTIONS------------------------------------------------------------
+
+function textClean(str) {
+  clean_str = str.replace(/\s+/g, "-").toLowerCase();
+  return clean_str;
+}
 
 function assignBarClass(date, divisions) {
   return date < divisions[0]
@@ -91,7 +102,14 @@ function assignBarClass(date, divisions) {
 }
 
 function typeColor(type) {
-  return type == "nonfiction" ? nonfictionColor : fictionColor;
+  return type == "nonfiction" ? "white" : covidColor;
+}
+function strokeColor(type) {
+  return type == "nonfiction" ? covidColor : "none";
+}
+
+function strokeWidth(type) {
+  return type == "nonfiction" ? "1" : "none";
 }
 
 function colorPeriods() {
@@ -108,16 +126,72 @@ function removeAll(color = "blue") {
   d3.selectAll(".divisions").transition().style("opacity", "0");
   d3.selectAll(".shading").transition().duration(500).style("opacity", "0");
   d3.selectAll(".periods").transition().duration(500).style("opacity", "0");
-  d3.selectAll(".bar").attr("opacity", "1");
-  // why two lines?
+  d3.selectAll(".section").transition().duration(500).style("opacity", "0");
+  d3.selectAll(".bar").attr("opacity", "1").style("stroke", "none");
+  d3.selectAll("path").style("pointer-events", "none");
+
   if (color == "blue") {
     bars = d3.selectAll(".bar");
     bars.transition().duration(500).style("fill", "steelblue");
-    //bars.style("fill", "steelblue")
   } else if (color == "periods") {
     colorPeriods();
   }
-  d3.selectAll("path").style("pointer-events", "none");
+}
+
+function periodLabelsSections(text, color) {
+  let id_text = "section-text-" + textClean(text);
+  let id_rect = "section-rect-" + textClean(text);
+  let chart = d3.select("#g-chart");
+
+  chart
+    .append("text")
+    .attr("class", "section text")
+    .attr("id", id_text)
+    .text(text)
+    .attr("x", 100)
+    .attr("y", 100)
+    .style("opacity", "0")
+    .style("text-anchor", "middle")
+    .style("fill", "white");
+
+  var rectBox = document.getElementById(id_text).getBBox();
+
+  chart
+    .append("rect")
+    .attr("class", "section rect")
+    .attr("id", id_rect)
+    .attr("x", rectBox.x - 5)
+    .attr("y", rectBox.y)
+    .attr("width", rectBox.width + 10)
+    .attr("height", rectBox.height)
+    .attr("rx", 6)
+    .attr("ry", 6)
+    .attr("fill", color)
+    .style("opacity", "0")
+    .lower();
+}
+
+// MOBILE CHANGES-------------------------------------------------------------
+
+if (is_mobile) {
+  text =
+    'Let\'s zoom into five different time periods to further explore my reading over the years: <span class="college-text">College</span>, \
+    <span class="covid-text">COVID-19</span>, <span class="moving-text">Moving</span>, <span class="nyc-text">NYC</span>, and \
+    <span class="grad-text">Grad School</span>.';
+  document.getElementById("step1c-text").innerHTML = text;
+
+  text =
+    "That brings us to the end of our journey. Thank you for following \
+    along as I explored my reading over the last few years.";
+  document.getElementById("step8-text").innerHTML = text;
+
+  text =
+    "Scroll along below as I explore my reading over the last eight years. \
+    (<em>For the best experience, view on Desktop.</em>)";
+  document.getElementById("scroll-start-text").innerHTML = text;
+
+  // remove scoller that gives tooltip
+  document.getElementById("step1b").style.display = "none";
 }
 
 // CHART FUNCTIONS-------------------------------------------------------------
@@ -125,75 +199,82 @@ function removeAll(color = "blue") {
 // starting chart
 function fullChartStart() {
   var chart = d3
-    .select(".chart")
+    .select(".chartContainer")
     .append("svg")
-    .attr("width", chartWidth + margin.left + margin.right)
+    .attr("width", chartWidth)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
     .attr("id", "g-chart")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-    .attr("width", chartWidth);
+    .attr("width", chartWidth - margin.left - margin.right);
 
   // create a tooltip
   var Tooltip = d3
-    .select(".chart")
+    .select(".chartContainer")
     .append("div")
-    .style("opacity", "0")
     .attr("class", "tooltip")
-    .style("background-color", "white")
-    .style("border", "solid")
-    .style("border-width", "2px")
-    .style("border-radius", "5px")
-    .style("padding", "5px")
-    .style("position", "relative");
+    .style("opacity", "0")
+    .style("stroke", "none")
+    .style("left", "0")
+    .style("top", "0");
 
-  // Three function that change the tooltip when user hover / move / leave a cell
+  // Three function that change the tooltip when user hover / move / leave a voronoi cell
   var mouseover = function (d) {
-    Tooltip.style("opacity", 1);
-    id = "#bar-" + String(d.book_id);
-    d3.select(id).style("stroke", "black").style("opacity", 1);
-  };
+    if (d) {
+      // avoids console error when cursor goes off chart
 
-  function tooltipSide(mouse) {
-    if (mouse + 800 > window.innerWidth) {
-      tooltipEdit = -200;
-    } else {
-      tooltipEdit = 50;
+      // show tooltip and update html
+      Tooltip.style("opacity", 1) // show opacity only if there is a found data element
+        .html(
+          "<b> Book Title:</b> " +
+            d.title +
+            "</br>" +
+            "<b> Author:</b> " +
+            d.author_last +
+            " " +
+            d.author_first +
+            "</br>" +
+            "<b>Date Started:</b> " +
+            d.start_tooltip +
+            "</br>" +
+            "<b> Date Finished: </b>" +
+            d.end_tooltip +
+            "</br>" +
+            "<b> Reading Duration:</b> " +
+            d.duration_days +
+            " days" +
+            "</br>" +
+            "<b> Rating:</b> " +
+            d.my_rating +
+            "/5"
+        );
+
+      // highlight bar corresponding to the voronoi path
+      const id = "#bar-" + String(d.book_id);
+      d3.select(id).style("stroke", "black");
     }
-    return mouse + tooltipEdit;
-  }
-
-  var mousemove = function (d) {
-    Tooltip.html(
-      "<b> Book Title:</b> " +
-        d.title +
-        "</br>" +
-        "<b> Author:</b> " +
-        d.author_last +
-        " " +
-        d.author_first +
-        "</br>" +
-        "<b>Date Started:</b> " +
-        d.start_tooltip +
-        "</br>" +
-        "<b> Date Finished: </b>" +
-        d.end_tooltip +
-        "</br>" +
-        "<b> Reading Duration:</b> " +
-        d.duration_days +
-        " days" +
-        "</br>" +
-        "<b> Rating:</b> " +
-        d.my_rating +
-        "/5"
-    )
-      .style("left", tooltipSide(d3.mouse(this)[0]) + "px")
-      .style("top", d3.mouse(this)[1] - 500 + "px");
+  };
+  var mousemove = function () {
+    // console.log(d3.event);
+    // console.log(d3.event.pageX);
+    const mouseOnLeftSide = d3.event.pageX / window.innerWidth <= 0.5;
+    if (mouseOnLeftSide) {
+      Tooltip.style("left", d3.mouse(this)[0] + 100 + "px");
+    } else {
+      const tooltipWidth = document
+        .querySelector(".tooltip")
+        .getBoundingClientRect().width;
+      Tooltip.style("left", d3.mouse(this)[0] - tooltipWidth + 25 + "px");
+    }
+    Tooltip.style("top", d3.mouse(this)[1] - 500 + "px");
   };
   var mouseleave = function (d) {
     Tooltip.style("opacity", 0);
-    id = "#bar-" + String(d.book_id);
-    d3.select(id).style("stroke", "none").style("opacity", 1);
+    if (d) {
+      // prevent console error caused by voronoi side effects
+      id = "#bar-" + String(d.book_id);
+      d3.select(id).style("stroke", "none");
+    }
   };
 
   d3.csv("data/gr_js_count.csv", function (error, data) {
@@ -216,9 +297,11 @@ function fullChartStart() {
     const totalRead = d3.max(data, function (d) {
       return d.rn;
     });
-    const barHeight = 10;
 
-    x = d3.scaleTime().range([0, chartWidth]).domain([minDate, maxDate]);
+    x = d3
+      .scaleTime()
+      .range([0, chartWidth - margin.left - margin.right])
+      .domain([minDate, maxDate]);
     y = d3.scaleLinear().range([height, 0]).domain([0, totalRead]);
 
     //tooltip
@@ -241,13 +324,13 @@ function fullChartStart() {
       .style("pointer-events", "none")
       .attr("d", (d, i) => voronoi.renderCell(i));
 
-    let xAxis = chart
+    // add axes
+    chart
       .append("g")
       .attr("id", "x-axis")
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x).tickFormat(d3.timeFormat("%Y")));
-
-    let yAxis = chart.append("g").attr("id", "y-axis").call(d3.axisLeft(y));
+    chart.append("g").attr("id", "y-axis").call(d3.axisLeft(y));
 
     chart
       .append("text")
@@ -267,20 +350,15 @@ function fullChartStart() {
       .append("g")
       .attr("class", (d) => assignBarClass(d.date_start, divisions))
       .attr("id", (d) => "bar-" + d.book_id)
-      .attr("transform", function (d) {
-        return "translate(" + x(d.date_start) + ",0)";
-      })
-      .style("fill", "steelblue")
+      .attr("transform", (d) => "translate(" + x(d.date_start) + ",0)")
+      .style("fill", defaultColor)
+      .style("stroke-width", "2px")
       .append("rect")
       .transition()
       .duration(1500)
-      .attr("y", function (d) {
-        return y(+d.rn) - barHeight / 2;
-      })
+      .attr("y", (d) => y(d.rn + 2))
       .attr("height", barHeight)
-      .attr("width", function (d) {
-        return x(d.date_read) - x(d.date_start);
-      });
+      .attr("width", (d) => x(d.date_read) - x(d.date_start));
 
     // allow tooltip to be enabled on top of bar
     d3.selectAll(".voronoiWrapper").raise();
@@ -380,6 +458,12 @@ function fullChartStart() {
     periodLabels(2, "Moving", movingColor);
     periodLabels(3, "NYC", nycColor);
     periodLabels(4, "Grad School", gradColor);
+
+    periodLabelsSections("College", collegeColor);
+    periodLabelsSections("COVID-19", covidColor);
+    periodLabelsSections("Moving", movingColor);
+    periodLabelsSections("NYC", nycColor);
+    periodLabelsSections("Grad School", gradColor);
   });
 }
 
@@ -387,7 +471,7 @@ function fullChartStart() {
 function fullChartRefresh() {
   d3.selectAll("rect").attr("pointer-events", "auto");
   d3.csv("data/gr_js_count.csv", function (error, data) {
-    var chart = d3.select(".chart");
+    var chart = d3.select(".chartContainer");
     var parseDate = d3.timeParse("%Y-%m-%d");
 
     data.forEach(function (d) {
@@ -403,7 +487,10 @@ function fullChartRefresh() {
     });
 
     // Update X axis
-    x = d3.scaleTime().range([0, chartWidth]).domain([minDate, maxDate]);
+    x = d3
+      .scaleTime()
+      .range([0, chartWidth - margin.left - margin.right])
+      .domain([minDate, maxDate]);
     y = d3.scaleLinear().range([height, 0]).domain([0, totalRead]);
 
     chart
@@ -423,23 +510,17 @@ function fullChartRefresh() {
       .merge(bars)
       .transition()
       .duration(1000)
-      .attr("transform", function (d) {
-        return "translate(" + x(d.date_start) + ",0)";
-      })
+      .attr("transform", (d) => "translate(" + x(d.date_start) + ",0)")
       .selectAll("rect")
-      .attr("y", function (d) {
-        return y(d.rn);
-      })
-      .attr("height", 4)
-      .attr("width", function (d) {
-        return x(d.date_read) - x(d.date_start);
-      });
+      .attr("y", (d) => y(d.rn + 2))
+      .attr("height", barHeight)
+      .attr("width", (d) => x(d.date_read) - x(d.date_start));
   });
 }
 
 // zoom into a specific part of the chart
 function panChart(startDate, endDate, barHeight, nyc = null) {
-  var chart = d3.select(".chart");
+  var chart = d3.select(".chartContainer");
 
   d3.csv("data/gr_js_count.csv", function (error, data) {
     var parseDate = d3.timeParse("%Y-%m-%d");
@@ -462,7 +543,10 @@ function panChart(startDate, endDate, barHeight, nyc = null) {
     const maxBook = d3.max(fil, (d) => d.rn);
 
     // Update X axis
-    x = d3.scaleTime().range([0, chartWidth]).domain([minDate, maxDate]);
+    x = d3
+      .scaleTime()
+      .range([0, chartWidth - margin.left - margin.right])
+      .domain([minDate, maxDate]);
 
     chart
       .select("#x-axis")
@@ -489,31 +573,42 @@ function panChart(startDate, endDate, barHeight, nyc = null) {
     bars
       .transition()
       .duration(1000)
-      .attr("transform", function (d) {
-        return "translate(" + x(d.date_start) + ",0)";
-      })
+      .attr("transform", (d) => "translate(" + x(d.date_start) + ",0)")
       .selectAll("rect")
-      .attr("y", function (d) {
-        return y(d.rn);
-      })
+      .attr("y", (d) => y(d.rn))
       .attr("height", barHeight)
-      .attr("width", function (d) {
-        return x(d.date_read) - x(d.date_start);
-      });
+      .attr("width", (d) => x(d.date_read) - x(d.date_start));
 
     if (nyc === true) {
+      // chart
+      //   .append("rect")
+      //   .attr("class", "shading summer-16")
+      //   .attr("x", x(new Date("2016-06-23")))
+      //   .attr("y", y(142))
+      //   .attr("width", x(new Date("2016-08-26")) - x(new Date("2016-06-23")))
+      //   .attr("y", y(142))
+      //   .attr("opacity", "0")
+      //   .attr("fill", "none")
+      //   .attr("stroke", "black")
+      //   .attr("stroke-width", "3")
+      //   .attr("stroke-dasharray","5 10")
+      //   .lower();
+
       d3.select("#g-chart")
         .append("rect")
         .attr("class", "shading nyc")
         .attr("x", x(new Date("2022-08-07")))
-        .attr("y", 0)
+        .attr("y", y(142))
         .attr("width", x(new Date("2022-12-29")) - x(new Date("2022-08-07")))
-        .attr("height", height)
-        .attr("opacity", "0")
-        .attr("fill", "#cfd1d3")
+        .attr("height", y(138) - y(142))
+        .attr("opacity", "1")
+        .attr("fill", "none")
+        .attr("stroke", "black")
+        .attr("stroke-width", "3")
+        .attr("stroke-dasharray", "5 10")
         .lower();
 
-      d3.select(".shading.nyc").transition().delay(500).attr("opacity", 0.2);
+      d3.select(".shading.nyc").transition().delay(500).attr("opacity", 0.4);
     }
   });
 }
@@ -541,7 +636,10 @@ function summer2016() {
     const minDate = d3.min(fil, (d) => d.date_start);
 
     // Update X axis
-    var x = d3.scaleTime().range([0, chartWidth]).domain([minDate, maxDate]);
+    var x = d3
+      .scaleTime()
+      .range([0, chartWidth - margin.left - margin.right])
+      .domain([minDate, maxDate]);
 
     chart
       .select("#x-axis")
@@ -563,17 +661,20 @@ function summer2016() {
       .append("rect")
       .attr("class", "shading summer-16")
       .attr("x", x(new Date("2016-06-23")))
-      .attr("y", 0)
+      .attr("y", y(17))
       .attr("width", x(new Date("2016-08-26")) - x(new Date("2016-06-23")))
-      .attr("height", height)
+      .attr("height", height - y(16))
       .attr("opacity", "0")
-      .attr("fill", collegeColor)
+      .attr("fill", "none")
+      .attr("stroke", "black")
+      .attr("stroke-width", "3")
+      .attr("stroke-dasharray", "5 10")
       .lower();
 
     d3.select(".shading.summer-16")
       .transition()
       .duration(1000)
-      .attr("opacity", 0.2);
+      .attr("opacity", 0.4);
 
     // Update chart
     var bars = chart.selectAll(".bar").data(data);
@@ -618,7 +719,10 @@ function collegeChart() {
     const minDate = d3.min(fil, (d) => d.date_start);
 
     // Update X axis
-    x = d3.scaleTime().range([0, chartWidth]).domain([minDate, maxDate]);
+    x = d3
+      .scaleTime()
+      .range([0, chartWidth - margin.left - margin.right])
+      .domain([minDate, maxDate]);
 
     chart
       .select("#x-axis")
@@ -634,38 +738,23 @@ function collegeChart() {
     //shading
     var parseDate = d3.timeParse("%Y-%m-%d");
 
-    summers.forEach(function (d) {
-      d.start = parseDate(d.start);
-      d.end = parseDate(d.end);
-    });
-
     chart
-      .append("rect")
-      .attr("class", "shading college")
-      .attr("x", x(minDate))
-      .attr("y", 0)
-      .attr("width", x(new Date("2017-09-18")) - x(minDate))
-      .attr("height", height)
-      .attr("opacity", 0)
-      .attr("fill", "#DBD8FD")
-      .lower();
+      .append("line")
+      .attr("class", "divisions")
+      .attr("id", "college-division")
+      .attr("x1", x(new Date("2017-09-18")))
+      .attr("y1", 0)
+      .attr("x2", x(new Date("2017-09-18")))
+      .attr("y2", height)
+      .style("stroke-width", 2)
+      .style("stroke", "black")
+      .style("stroke-dasharray", "4, 3")
+      .style("opacity", "0");
 
-    chart
-      .append("rect")
-      .attr("class", "shading college")
-      .attr("x", x(new Date("2017-09-18")))
-      .attr("y", 0)
-      .attr("width", x(new Date("2019-06-01")) - x(new Date("2017-09-18")))
-      .attr("height", height)
-      .attr("opacity", 0)
-      .attr("fill", "#e1e2e3")
-      .lower();
-
-    d3.selectAll(".shading.college")
+    d3.select("#college-division")
       .transition()
-      .delay(500)
       .duration(1000)
-      .attr("opacity", 0.5);
+      .style("opacity", "0.4");
 
     // Update chart
     var bars = chart.selectAll(".bar").data(data);
@@ -693,12 +782,13 @@ function collegeChart() {
 // WAYPOINTS-------------------------------------------------------------------
 
 function waypoints() {
-  let offset = "80%";
+  let offset = "60%";
   // fade in chart
   new Waypoint({
     element: document.getElementById("step1"),
     handler: function (direction) {
       if (direction == "down") {
+        fullChartRefresh();
         removeAll();
         d3.select(".chartContainer")
           .transition()
@@ -749,16 +839,19 @@ function waypoints() {
     element: document.getElementById("step1c"),
     handler: function () {
       removeAll((color = "periods"));
+
+      if (!is_mobile) {
+        d3.selectAll(".periods")
+          .transition()
+          .duration(1000)
+          .style("opacity", "1");
+      }
       d3.selectAll(".divisions")
         .transition()
         .duration(1000)
         .style("opacity", "1");
-      d3.selectAll(".periods")
-        .transition()
-        .duration(1000)
-        .style("opacity", "1");
     },
-    offset: offset,
+    offset: "75%",
   });
 
   // zoom into 2019
@@ -768,6 +861,17 @@ function waypoints() {
       if (direction == "down") {
         // 2 summer 2016
         removeAll((color = "periods"));
+
+        d3.select("#section-text-college")
+          .transition()
+          .duration(1000)
+          .style("opacity", "1");
+
+        d3.select("#section-rect-college")
+          .transition()
+          .duration(1000)
+          .style("opacity", "1");
+
         summer2016();
       } else {
         fullChartRefresh();
@@ -787,7 +891,7 @@ function waypoints() {
         .duration(500)
         .style("fill", collegeColor);
     },
-    offset: "60%",
+    offset: "30%",
   });
 
   // move to all of college and color summers
@@ -797,6 +901,17 @@ function waypoints() {
       if (direction == "down") {
         //  3 college years
         removeAll((color = "periods"));
+
+        d3.select("#section-text-college")
+          .transition()
+          .duration(1000)
+          .style("opacity", "1");
+
+        d3.select("#section-rect-college")
+          .transition()
+          .duration(1000)
+          .style("opacity", "1");
+
         collegeChart();
       } else {
         //
@@ -814,6 +929,17 @@ function waypoints() {
       if (direction == "down") {
         // 4 Post College / COVID
         removeAll((color = "periods"));
+
+        d3.select("#section-text-covid-19")
+          .transition()
+          .duration(1000)
+          .style("opacity", "1");
+
+        d3.select("#section-rect-covid-19")
+          .transition()
+          .duration(1000)
+          .style("opacity", "1");
+
         startDate = new Date("2019-04-15");
         endDate = new Date("2021-08-14");
         panChart(startDate, endDate, barHeight4);
@@ -837,17 +963,10 @@ function waypoints() {
       d3.selectAll(".bar")
         .transition()
         .duration(500)
-        .style("fill", (d) => typeColor(d.type));
-    },
-    offset: offset,
-  });
-
-  // type coloring
-  new Waypoint({
-    element: document.getElementById("step4a"),
-    handler: function () {
-      // do nothing with these for now
-      //d3.selectAll("#bar-41949311, #bar-55145261, #bar-55421550")
+        .style("fill", (d) => typeColor(d.type))
+        .style("stroke", (d) => strokeColor(d.type))
+        .style("stroke-width", (d) => strokeColor(d.type));
+      //.style("stroke-dasharray", (d) => strokeType(d.type));
     },
     offset: offset,
   });
@@ -857,8 +976,22 @@ function waypoints() {
     element: document.getElementById("step5"),
     handler: function (direction) {
       if (direction == "down") {
+        // // turn off stroke borders
+        // d3.selectAll(".bar").style('stroke', 'none');
+
         // 5 Move to NYC
         removeAll((color = "periods"));
+
+        d3.select("#section-text-moving")
+          .transition()
+          .duration(1000)
+          .style("opacity", "1");
+
+        d3.select("#section-rect-moving")
+          .transition()
+          .duration(1000)
+          .style("opacity", "1");
+
         startDate = new Date("2021-08-14");
         endDate = new Date("2022-04-01");
         panChart(startDate, endDate, barHeight5);
@@ -880,6 +1013,17 @@ function waypoints() {
       if (direction == "down") {
         // 6 NYC
         removeAll((color = "periods"));
+
+        d3.select("#section-text-nyc")
+          .transition()
+          .duration(1000)
+          .style("opacity", "1");
+
+        d3.select("#section-rect-nyc")
+          .transition()
+          .duration(1000)
+          .style("opacity", "1");
+
         startDate = new Date("2022-04-01");
         endDate = new Date("2023-09-01");
         panChart(startDate, endDate, barHeight6, (nyc = true));
@@ -902,6 +1046,17 @@ function waypoints() {
       if (direction == "down") {
         // 7 start grad school
         removeAll((color = "periods"));
+
+        d3.select("#section-text-grad-school")
+          .transition()
+          .duration(1000)
+          .style("opacity", "1");
+
+        d3.select("#section-rect-grad-school")
+          .transition()
+          .duration(1000)
+          .style("opacity", "1");
+
         startDate = new Date("2023-09-01");
         endDate = new Date("2024-01-26");
         panChart(startDate, endDate, barHeight7);
@@ -935,13 +1090,25 @@ function waypoints() {
     },
     offset: offset,
   });
+
+  new Waypoint({
+    element: document.getElementById("step8a"),
+    handler: function (direction) {
+      if (direction == "down") {
+        d3.selectAll("path").style("pointer-events", "none");
+      } else {
+        d3.selectAll("path").style("pointer-events", "all");
+      }
+    },
+    offset: offset,
+  });
 }
 
 // MAIN------------------------------------------------------------------------
 
 function main() {
-  fullChartStart();
   waypoints();
+  fullChartStart();
 }
 
 main();

@@ -4,16 +4,15 @@
 :root {
   --collegeColor: #8b80f9;
   --covidColor: #d1495b;
-  --movingColor: #2a7f62;
-  --nycColor: #ee964b;
-  --gradColor: #f95738;
-  --nonfictionColor: #58a4b0;
-  --fictionColor: #f7c4a5;
+  --movingColor: steelblue;
+  --nycColor: #2a7f62;
+  --gradColor: #ee964b;
+  --textWidth: 50vw;
+  --mobileWidth: 90vw;
 }
 
 body {
   font-family: "Public Sans", Helvetica, sans-serif;
-  width: 720px;
   padding: 1em;
   margin: 0 auto;
   background: #f9f9f9;
@@ -26,6 +25,12 @@ button {
   margin-block-end: 0;
   background: #f9f9f9;
   display: inline;
+}
+
+.title-container {
+  width: var(--textWidth);
+  max-width: 800px;
+  margin: auto;
 }
 
 .title {
@@ -43,24 +48,28 @@ button {
 .body-text {
   font-size: 18px;
   line-height: 1.56;
-  margin-bottom: 0;
-}
-
-a {
-  text-decoration: none;
-  color: black;
+  width: var(--textWidth);
+  max-width: 800px;
+  margin: auto;
 }
 
 .tooltip {
+  position: relative;
   font-size: 12px;
   width: 21%;
-  margin-left: 30px;
+  z-index: 3;
+  background-color: white;
+  border: solid;
+  border-width: 2px;
+  border-radius: 5px;
+  padding: 5px;
+  pointer-events: none;
 }
 
 .entry {
-  width: 900px;
+  width: 80vw;
   padding: 0;
-  margin-left: -100px;
+  margin: auto;
 }
 
 h2,
@@ -88,9 +97,9 @@ h5 {
 
 .chartContainer {
   position: sticky;
+  top: 15vh;
   z-index: 1;
   margin: auto;
-  top: 20%;
   width: 100%;
   opacity: 0;
 }
@@ -108,7 +117,7 @@ h5 {
   margin-right: auto;
   margin-left: auto;
   line-height: 1.2;
-  z-index: 9999;
+  z-index: 2;
 }
 
 #step1 {
@@ -120,13 +129,13 @@ h5 {
 }
 
 #stepLast {
-  opacity: 0;
+  visibility: hidden;
   margin-bottom: 10vh;
 }
 
 .book {
-  width: 30%;
-  margin-top: 15vh;
+  width: 25%;
+  margin-top: 35vh;
   margin-bottom: 15vh;
   z-index: 9999;
   display: flex;
@@ -141,17 +150,18 @@ h5 {
 }
 
 .nonfiction {
-  box-shadow: var(--nonfictionColor) 0px 5px 15px;
-  border: 1px var(--nonfictionColor) solid;
+  box-shadow: var(--covidColor) 0px 5px 15px;
+  border: 2px var(--covidColor) solid;
 }
 
 .fiction {
-  box-shadow: var(--fictionColor) 0px 5px 15px;
-  border: 1px var(--fictionColor) solid;
+  box-shadow: black 0px 5px 15px;
+  border: 1px black solid;
 }
 
 .book-info {
   margin: auto;
+  margin-left: 0;
   font-size: 14px;
   -ms-flex: 0 0 66.67%;
   flex: 0 0 66.67%;
@@ -161,8 +171,7 @@ h5 {
 }
 
 img {
-  width: 100%;
-  max-height: 100%;
+  max-width: 100px;
 }
 
 .book-img {
@@ -170,8 +179,7 @@ img {
   margin: auto;
   -ms-flex: 0 0 33.333333%;
   flex: 0 0 33.333333%;
-  max-width: 33.333333%;
-  width: 100%;
+  height: 100%;
 }
 
 button {
@@ -192,9 +200,10 @@ button {
   transition: max-height 0.2s ease-out;
 }
 
+a,
 .link {
   color: black;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 a:hover {
@@ -211,6 +220,13 @@ a:hover {
   background-color: var(--collegeColor);
   font-weight: 600;
   border-radius: 5px;
+  color: white;
+}
+
+.college-summer-text {
+  font-weight: 600;
+  border-radius: 5px;
+  border: 2px black dashed;
 }
 
 .covid-text {
@@ -231,6 +247,7 @@ a:hover {
   background-color: var(--nycColor);
   font-weight: 600;
   border-radius: 5px;
+  color: white;
 }
 
 .grad-text {
@@ -247,20 +264,22 @@ a:hover {
 }
 
 .nonfiction-text {
-  background-color: var(--nonfictionColor);
   font-weight: 600;
   border-radius: 5px;
-}
-.fiction-text {
-  background-color: var(--fictionColor);
-  font-weight: 600;
-  border-radius: 5px;
+  border: 2.5px var(--covidColor) solid;
 }
 
 .periods.text {
   font-weight: 600;
   z-index: 9999;
+  fill: white;
 }
+
+.section.text {
+  font-weight: 600;
+  font-size: 22px;
+}
+
 .goodreads {
   text-decoration: underline;
 }
@@ -268,4 +287,73 @@ a:hover {
 span {
   padding-left: 3px;
   padding-right: 3px;
+}
+
+.outro {
+  width: var(--textWidth);
+  margin: auto;
+}
+
+/* mobile CSS */
+@media (min-width: 320px) and (max-width: 999px) {
+  html {
+    max-width: 100%;
+  }
+
+  body {
+    width: 100%;
+    position: relative;
+  }
+
+  .byline {
+    font-size: 18px;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+
+  .subtitle {
+    font-size: 18px;
+  }
+  .entry {
+    width: 100vw;
+    max-width: 100%;
+  }
+
+  .chartContainer {
+    width: 95vw;
+    top: 30%;
+    margin: auto;
+    z-index: -1;
+  }
+  .scroller {
+    width: 65vw;
+    font-size: 16px;
+    z-index: 5;
+  }
+
+  .scroller.book.left {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .scroller.book.right {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .title-container {
+    width: var(--mobileWidth);
+  }
+
+  .body-text {
+    width: var(--mobileWidth);
+    font-size: 20px;
+  }
+
+  .outro {
+    width: var(--mobileWidth);
+    font-size: 20px;
+  }
 }

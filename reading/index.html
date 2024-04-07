@@ -2,8 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="http://d3js.org/d3.v4.min.js"></script>
+    <meta name="viewport" content="width=device-width" />
+    <meta property="og:image" content="../style/images/reading.png" />
+    <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="https://d3js.org/d3-delaunay.v6.min.js"></script>
     <script src="js/noframework.waypoints.min.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css" />
@@ -28,38 +29,39 @@
     </div>
     <div class="body-text" id="intro">
       <p>
-        As a child I was a voracious reader (if only to rack up Accelerated
+        As a child, I was a voracious reader (if only to rack up Accelerated
         Reader points,
         <a
           target="_blank"
           href="https://www.tiktok.com/discover/how-to-get-a-lot-of-accelerated-reader-points"
           >iynyk</a
         >). However, as the story often goes, my reading plummeted in high
-        school. In my 10th grade English class, I watched more movies than read
-        books and in my 12th-grade Literature class, I managed to read only two
-        of the required ten-plus books we were assigned.
+        school. In my 10th-grade English class, we watched more movies than we
+        read books, and in my 12th-grade Literature class, I managed to read
+        only two of the ten-plus books we were assigned.
       </p>
       <p>
         Thankfully, college brought back my love for reading, in part due to two
-        close who were English majors. Their passion for books reinvigorated my
-        love for reading and the summer after my first year of college, I dove
-        back in by reading a book a week over the summer. After this impassioned
-        reentry into reading, I consider myself a generally consistent reader,
-        even going as far as declaring reading a hobby of mine when meeting new
-        people.
+        close friends who were English majors. Their passion for books
+        reinvigorated my love for reading, and the summer after my first year of
+        college I dove back in by reading one book per week over the summer.
+        Since this reentry into reading, I consider myself a generally
+        consistent reader, even going so far as to declare reading “a hobby of
+        mine” when meeting new people.
       </p>
       <p>
         With that being said, I by no means consider myself a particularly quick
-        or prolific reader but I do consider myself someone who collects a
+        or prolific reader, but I do consider myself someone who collects
         copious amounts of personal data about myself. To that end, I have
-        logged every book I have read since 2016 on Goodreads (yes I know I
-        should switch to
+        logged not only every book I have read since 2016 on Goodreads (yes I
+        know I should switch to
         <a
           style="display: inline"
           target="_blank"
           href="https://www.thestorygraph.com/"
           >StoryGraph</a
-        >) along with a star rating, a finish date and an occasional review.
+        >) but also a star rating, a finish date, and even occasionally a
+        review.
         <span class="collapsible">
           &#9656; Click here for some additional comments about the data if
           interested.
@@ -69,25 +71,23 @@
       <div class="content" id="content">
         <p>
           I have tracked the date I finished every book I have read since 2016
-          on Goodreads. I did not track the start date but since I rarely read
+          on Goodreads. I did not track the start date, but since I rarely read
           more than one book at a time, I imputed a start date for every book
           using the completion date of the last book I had read. This
-          methodology has the affect of exaggerating my average reading rate.
+          methodology has the effect of exaggerating my average reading rate.
           For example, it may appear it took me 30 days to read a book but in
-          actuality, it took me a week but I did not start the book until three
-          weeks after I had finished the most recent book. While not a perfect
-          representation of my reading over the last few years, it should work
-          relatively well.
+          actuality, it took me a week because I did not start the book until
+          three weeks after I had finished the most recent book. While not a
+          perfect representation of my reading over the last few years, it
+          should work relatively well.
         </p>
       </div>
-      <p>
-        Scroll along below as I explore the reading over the last eight years.
+      <p id="scroll-start-text">
+        Scroll along below as I explore my reading over the last eight years.
       </p>
     </div>
-    <div class="entry">
-      <div class="chartContainer" id="intro-chart">
-        <div class="chart"></div>
-      </div>
+    <div class="entry" id="entry">
+      <div class="chartContainer" id="intro-chart"></div>
       <div class="scroller" id="step1">
         <p>
           This chart shows every book I have read from
@@ -122,7 +122,7 @@
         </div>
       </div>
 
-      <div class="scroller" id="step1b">
+      <div class="scroller" id="step1b" style="pointer-events: none">
         <p>
           Feel free to pause for a moment and hover over each bar to see which
           book it represents.
@@ -130,19 +130,19 @@
       </div>
 
       <div class="scroller" id="step1c">
-        <p>
+        <p id="step1c-text">
           Let's zoom into five different time periods to further explore my
           reading over the years.
         </p>
       </div>
       <div class="scroller" id="step2">
         <p>
-          In the <span class="college-text">summer of 2016</span>, I challenged
-          myself to read a book a week in an attempt to revive my reading which
-          was for the most part a successful! Exploring a possible career in law
-          and working in my hometown prompted me to pickup titles related to
-          race and socioeconomic factors. Almost all the books I read were
-          nonfiction, a trend we will see persist.
+          In the <span class="college-summer-text">summer of 2016</span>, I
+          challenged myself to read one book per week in an attempt to revive my
+          reading which was for the most part successful! Exploring a possible
+          career in law and working in my hometown prompted me to pick up titles
+          related to race and socioeconomic factors. Almost all the books I read
+          were nonfiction, a trend we will see persist.
         </p>
       </div>
       <div class="scroller book left">
@@ -167,17 +167,16 @@
 
       <div class="scroller" id="step3">
         <p>
-          After this jump-start, I had a hot streak in which I read
-          <span class="college-text"> 1.8 books a month</span> in the first half
-          of college. During the second half, my reading pace declined as I only
-          read <span class="grey-text">0.4 books a month</span>. It must have
-          been the dread of the unknown ahead slowing me down.
+          After this jump-start, I had a hot streak during which I read
+          <b>1.8 books a month </b> in the first half of college. During the
+          second half, my reading pace declined as I only read
+          <b>0.4 books a month.</b> It must have been the dread of the unknown
+          ahead slowing me down.
         </p>
       </div>
       <div class="scroller" id="step4">
         <p>
-          As I settled into full time work and the
-          <span class="covid-text"> COVID-19 pandemic</span> began, I
+          As I settled into full time work and the COVID-19 pandemic began, I
           miraculously had my most consistent period reading
           <span class="covid-text"> 3.2 books a month</span>. I also read 47
           books in 2020, my all time one year record.
@@ -185,11 +184,10 @@
       </div>
       <div class="scroller" id="step4a">
         <p>
-          During this period, <span class="nonfiction-text">75%</span> of the
-          books I read were nonfiction which matches my overall split between
-          <span class="nonfiction-text">nonfiction</span> and
-          <span class="fiction-text">fiction</span> for 2016 to 2024. Continuing
-          scrolling to see a few highlights from this period.
+          During this period, 75% of the books I read were
+          <span class="nonfiction-text">nonfiction</span> which matches my
+          overall split between nonfiction and fiction for 2016 to 2024.
+          Continue scrolling to see a few highlights from this period.
         </p>
       </div>
 
@@ -237,42 +235,43 @@
 
       <div class="scroller" id="step5">
         <p>
-          In October 2021, I started a new job and soon after
-          <span class="moving-text">moved</span> to New York City in the start
-          of 2022. Through all these transitions, my reading took a bit of hit
-          and I read only 1.2 books a month during this period.
+          In October 2021, I started a new job and soon after moved to New York
+          City in the start of 2022. Through all these transitions, my reading
+          took a bit of a hit and I read only
+          <span class="moving-text">1.2 books a month</span> during this period.
         </p>
       </div>
       <div class="scroller" id="step6">
         <p>
-          Outside of a <span class="grey-text">small slowdown</span> in the fall
-          of 2022 in which was I applying to graduate school, my reading picked
+          Outside of a
+          <span class="college-summer-text">small slowdown</span> in the fall of
+          2022 during which I was applying to graduate school, my reading picked
           back up in 2022 and 2023 as I read
           <span class="nyc-text">1.9 books a month</span>.
         </p>
       </div>
       <div class="scroller" id="step6a">
         <p>
-          One notable development in this period is that I got my first ebook in
-          July of 2023. I rode the high horse as a physical-book-type-person but
-          when I found out an ebook fits in my Uniqlo crossbody bag and that the
-          battery lasts for weeks at a time, it was hard to argue with the
-          convenience.
+          One notable development during this period came in July of 2023 when I
+          got my first eBook reader. I rode the high horse as a
+          physical-book-type-person but when I found out an eBook fits in my
+          Uniqlo crossbody bag and that the battery lasts for weeks at a time,
+          it was hard to argue with the convenience.
         </p>
       </div>
       <div class="scroller" id="step7">
         <p>
-          As I alluded to, in the fall of 2023 I began
-          <span class="grad-text">graduate school</span> and generally was able
-          to keep a decent pace, reading 1.7 books a month over the first few
+          As I alluded to, in the fall of 2023 I began graduate school and
+          generally was able to keep a decent pace, reading
+          <span class="grad-text">1.7 books a month</span> over the first few
           months. However, I almost certainly will not be able to maintain this
           pace for much longer.
         </p>
       </div>
       <div class="scroller" id="step8">
-        <p>
+        <p id="step8-text">
           That brings us to the end of our journey. Thank you for following
-          along as I explore my reading over the last few years. Feel free to
+          along as I explored my reading over the last few years. Feel free to
           continue to explore the books by hovering over each bar.
         </p>
       </div>
@@ -290,8 +289,22 @@
       </div>
       <div class="scroller" id="stepLast"></div>
     </div>
-    <hr />
-    <p>Special thanks to Oliver Gladfelter for support with this project.</p>
+
+    <div class="outro">
+      <hr />
+      <p>
+        <a
+          target="_blank"
+          href="https://github.com/asteinhart/asteinhart.github.io/tree/main/reading"
+          >See code for this project here.</a
+        >
+      </p>
+      <p>
+        Special thanks to
+        <a target="_blank" href="https://cultureplot.com/">Oliver Gladfelter</a>
+        for support with this project.
+      </p>
+    </div>
 
     <script src="js/main.js"></script>
   </body>
