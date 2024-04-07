@@ -1,0 +1,129 @@
+---
+title: "reading-habits"
+output: html_document
+---
+
+```{r setup, include=FALSE} 
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+```
+
+```{r}
+library(tidyverse)
+library(lubridate)
+library(plotly)
+
+goodreads_csv = ""
+goodreads_raw <- read_csv(goodreads_csv)
+#load raw data
+goodreads <- goodreads_raw %>%
+  transmute(
+    book_id = `Book Id`,
+    title = `Title`,
+    author = `Author l-f`,
+    add_authors = `Additional Authors`,
+    isbn13 = str_remove(ISBN13, "^=\""),
+    isbn13 = str_remove(isbn13, "\"$"),
+    isbn13 = na_if(isbn13, ""),
+    my_rating = `My Rating`,
+    avg_rating = `Average Rating`,
+    n_pages = `Number of Pages`,
+    publication_y = `Original Publication Year`,
+    date_read = `Date Read`,
+    date_added = `Date Added`,
+    shelf = factor(`Exclusive Shelf`, levels = unique(`Exclusive Shelf`)),
+    review = `My Review`,
+    `Author l-f`
+  ) %>%
+  separate(`Author l-f`, into = c('author_first','author_last'), sep = ',' ) %>%
+  mutate(
+    tolower(str_trim(author_first)),
+    tolower(str_trim(author_last))
+  )
+
+#transform read data
+# filter to only those with a date_read date
+# take out stuff before college
+gr_read <- goodreads %>% filter(is.na(date_read) == F) %>%
+  arrange(date_read) %>%
+  tail(-11) %>% # remove first three books from hs
+  mutate(
+    #set the start date as the finish date of the last book
+    date_start = lag(date_read),
+    rn = row_number()
+) %>%
+ transmute(
+   rn,
+   book_id,
+   title,
+   author_first,
+   author_last,
+   n_pages,
+   my_rating,
+   avg_rating,
+   date_start = ymd(date_start),
+   date_read = ymd(date_read),
+   year_read = year(date_read),
+   # set a duration_days
+   duration_days = difftime(ymd(date_read), ymd(date_start), unit = 'days')) %>%
+  # get rid of the days part of value
+  mutate(
+    duration_days = replace_na(as.integer(str_trim(substr(duration_days,1,3))),1))
+
+# add one as its actually one more day
+gr_read$duration_days = gr_read$duration_days + 1
+
+
+dates = seq(as.Date(min(gr_read$date_start, na.rm = TRUE)), as.Date(max(gr_read$date_read, na.rm = TRUE)), by="days")
+dates = as_tibble(dates)
+
+dates_clean <- dates %>% rename(date_start = value) %>% mutate(start_num = row_number())
+gr_read = merge(x = gr_read, y = dates_clean, by = "date_start", all.x = TRUE)
+
+dates_clean <- dates %>% rename(date_read = value) %>% mutate(end_num = row_number())
+gr_read = merge(x = gr_read, y = dates_clean, by = "date_read", all.x = TRUE)
+
+gr_read <- gr_read[, c(4,3,5,6,7,8,9,10,2,11,1,12)]
+
+write_csv(gr_read, path = "gr_js_count.csv")
+```
+
+```{r}
+head(gr_read)
+```
+
+```{r}
+#chart mockup
+library(plotly)
+
+p <- plot_ly()
+for(i in 1:(nrow(gr_read) - 1)){
+
+  p <- add_trace(p,
+                 x = c(gr_read$date_start[i],gr_read$date_read[i]), 
+                 y = c(gr_read$rn[i],gr_read$rn[i]), 
+                 mode = "lines",
+                 type = 'scatter',
+                 line = list(width = 10),
+                 #facet_col = 'year_read',
+                # line = list(color = df$color[i], width = 20),
+                 showlegend = F,
+                 hoverinfo = "text",
+                 text = paste("Book: ", gr_read$title[i], "<br>",
+                              "Start Date: ", gr_read$date_start[i], "<br>",
+                              "End Date: ", gr_read$date_read[i], "<br>",
+                              "Duration: ", gr_read$duration_days[i], ' Days')
+  )
+}
+
+p <- p %>% layout(
+                  title = 'Books Read by Date and Read Time',
+                  yaxis = list(
+                    title = "Cumulative Read",
+                    zeroline = F
+                  ))
+
+```
+
+```{r}
+p
+```
